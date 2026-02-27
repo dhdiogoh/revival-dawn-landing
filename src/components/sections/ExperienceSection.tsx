@@ -1,12 +1,16 @@
 import { Heart, Users, Home, Sparkles, Wallet, Flame } from 'lucide-react';
 
 const experiences = [
-  { icon: Heart, text: 'Curas físicas' },
-  { icon: Flame, text: 'Jovens assumindo chamados' },
+  { icon: Heart, text: 'Pessoas curadas' },
+  { icon: Flame, text: 'Jovens assumindo seus chamados' },
+  { icon: Users, text: 'Líderes sendo avivados' },
   { icon: Home, text: 'Famílias restauradas' },
+  { icon: Sparkles, text: 'Liberação de destino e dons' },
+  { icon: Users, text: 'Igrejas fortalecidas' },
+  { icon: Heart, text: 'Projetos sociais sendo ativados' },
+  { icon: Heart, text: 'Curas físicas' },
   { icon: Sparkles, text: 'Milagres sobrenaturais' },
-  { icon: Wallet, text: 'Provisão financeira' },
-  { icon: Users, text: 'Líderes avivados' },
+  { icon: Wallet, text: 'Provisão financeira inesperada' },
 ];
 
 const speakers = [
@@ -25,7 +29,7 @@ const ExperienceSection = () => {
           A EXPERIÊNCIA
         </h2>
         <p className="font-inter text-rvl-escuro/70 max-w-2xl leading-relaxed mb-12">
-          Não movido apenas por emoção, mas por encontro genuíno com o Espírito Santo. Cada edição tem sido palco de histórias que mudam destinos.
+          Buscamos trazer homens e mulheres de Deus pelo que carregam, não pelo nome. Não queremos um ambiente movido apenas por emoção ou atmosfera momentânea. Queremos um lugar onde pessoas sejam encontradas, alcançadas e profundamente tocadas pelo Espírito Santo.
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12">

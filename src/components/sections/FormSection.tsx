@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Check } from 'lucide-react';
+import { Check, ShieldCheck } from 'lucide-react';
 
 const bullets = [
   'Notificação de abertura de inscrições',
@@ -37,7 +37,7 @@ const FormSection = () => {
                 QUERO RECEBER NOVIDADES
               </h2>
               <p className="font-inter text-rvl-escuro/70 mb-6">
-                Seja o primeiro a saber sobre programação, preletores e inscrições.
+                Em breve: programação, preletores e inscrições.
               </p>
               <ul className="space-y-3">
                 {bullets.map((b) => (
@@ -85,8 +85,8 @@ const FormSection = () => {
               >
                 QUERO FAZER PARTE
               </button>
-              <p className="text-xs text-muted-foreground text-center">
-                🔒 Dados salvos com segurança. Sem spam.
+              <p className="text-xs text-muted-foreground flex items-center justify-center gap-1.5 mt-4">
+                <ShieldCheck className="w-4 h-4 text-rvl-laranja/70" /> Dados salvos com segurança. Sem spam.
               </p>
             </form>
           </div>

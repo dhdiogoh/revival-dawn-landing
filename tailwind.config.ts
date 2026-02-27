@@ -62,6 +62,18 @@ export default {
           escuro: "hsl(var(--rvl-escuro))",
           "exp-bg": "hsl(var(--rvl-exp-bg))",
         },
+        game: {
+          sky: {
+            top: "hsl(var(--game-sky-top))",
+            mid: "hsl(var(--game-sky-mid))",
+            bottom: "hsl(var(--game-sky-bottom))",
+          },
+          ground: "hsl(var(--game-ground))",
+          sun: "hsl(var(--game-sun))",
+          "sun-glow": "hsl(var(--game-sun-glow))",
+          cream: "hsl(var(--game-cream))",
+          red: "hsl(var(--game-red))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

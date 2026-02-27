@@ -1,9 +1,11 @@
+import { ImageCarousel } from '../ImageCarousel';
+
 const editions = [
-  { year: '2021', theme: 'Do It Again', desc: 'A primeira edição que ousou acreditar no impossível.', side: 'left' },
-  { year: '2022', theme: 'Unidade', desc: 'Igrejas de toda a cidade marchando juntas pela primeira vez.', side: 'right' },
-  { year: '2023', theme: 'Manifesto', desc: 'Uma declaração profética sobre o Norte do Brasil.', side: 'left' },
-  { year: '2024', theme: 'Atos', desc: 'O mover apostólico restaurado ao seu lugar de origem.', side: 'right' },
-  { year: '2025', theme: 'Reset', desc: 'Um ano de pausa intencional. Preparando o terreno.', side: 'left' },
+  { year: '2021', theme: 'Do It Again', desc: 'Um clamor para que Deus repetisse em nossa geração o que Ele já havia feito em outras.', side: 'left', images: ['/images/rvl-21-images/gustavo-paiva-rvl-21.JPG', '/images/rvl-21-images/vitor-ledo-rvl-21.JPG'] },
+  { year: '2022', theme: 'Unidade', desc: 'Firmados em João 17, declarando uma Igreja unida, alinhada e fundamentada em Cristo.', side: 'right', images: ['/images/rvl-22-images/correder-de-fogo-rvl-22.JPG', '/images/rvl-22-images/dunamis-rvl-22.jpg'] },
+  { year: '2023', theme: 'Manifesto', desc: 'Baseado em Romanos 8.19, anunciando uma geração que se manifesta como filhos de Deus no mundo.', side: 'left', images: ['/images/rvl-23-images/corredor-de-fogo-rvl-23.JPG', '/images/rvl-23-images/fhop-rvl-23.jpg'] },
+  { year: '2024', theme: 'Atos', desc: 'Inspirados pela Igreja primitiva, vivendo o evangelho de forma prática, viva e transformadora.', side: 'right', images: ['/images/rvl-24-images/revival-box-dunamis-rvl-24.jpg', '/images/rvl-24-images/sala-profetica-rvl-24.jpg'] },
+  { year: '2025', theme: 'Reset', desc: 'Um ano intencional de pausa, alinhamento e discernimento. Não era tempo de palcos — era tempo de processos. Tempo de responder a Deus e preparar o terreno para o que Ele estava construindo.', side: 'left' },
 ];
 
 const TimelineSection = () => {
@@ -31,15 +33,11 @@ const TimelineSection = () => {
                   <span className="font-bebas text-5xl text-rvl-laranja/30">{e.year}</span>
                   <h3 className="font-bebas text-2xl text-rvl-escuro tracking-wide">{e.theme}</h3>
                   <p className="font-inter text-sm text-rvl-escuro/70 mt-1 mb-4">{e.desc}</p>
-                  <div className="flex gap-3 flex-wrap">
-                    {/* TODO: substituir por fotos reais */}
-                    <div className="border-2 border-dashed border-muted-foreground/30 bg-muted rounded-lg h-32 w-40 flex items-center justify-center text-muted-foreground text-xs">
-                      Foto
+                  {e.images && (
+                    <div className="mt-4 flex justify-center md:justify-start">
+                      <ImageCarousel images={e.images} altPrefix={`Revival ${e.year}`} />
                     </div>
-                    <div className="border-2 border-dashed border-muted-foreground/30 bg-muted rounded-lg h-32 w-40 flex items-center justify-center text-muted-foreground text-xs">
-                      Foto
-                    </div>
-                  </div>
+                  )}
                 </div>
                 <div className="hidden md:block md:w-1/2" />
               </div>

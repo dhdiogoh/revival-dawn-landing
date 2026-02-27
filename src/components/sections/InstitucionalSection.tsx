@@ -1,7 +1,7 @@
 const cards = [
-  { num: '01', title: 'UNIDADE', text: 'Igrejas e líderes de diferentes denominações unidos por um só propósito: avivamento genuíno.' },
-  { num: '02', title: 'EXCELÊNCIA', text: 'Cada detalhe pensado para honrar a Deus e proporcionar a melhor experiência possível.' },
-  { num: '03', title: 'AVIVAMENTO', text: 'Mais que um evento — um movimento que transforma vidas, famílias e cidades inteiras.' },
+  { num: '01', title: 'UNIDADE', text: 'Igrejas, líderes e gerações reunidas em um só propósito: o avanço do Reino de Deus.' },
+  { num: '02', title: 'EXCELÊNCIA', text: 'Acreditamos que a própria criação manifesta a excelência do nosso Deus. Por isso, buscamos refletir Seu caráter em tudo o que fazemos com zelo, organização, responsabilidade e honra, como quem serve ao Senhor.' },
+  { num: '03', title: 'AVIVAMENTO', text: 'Não buscamos apenas momentos marcantes. Buscamos frutos que permanecem e vidas verdadeiramente transformadas.' },
 ];
 
 const InstitucionalSection = () => {
@@ -12,7 +12,7 @@ const InstitucionalSection = () => {
           O QUE É A REVIVAL CONFERENCE?
         </h2>
         <p className="font-inter text-rvl-escuro/80 text-base md:text-lg max-w-3xl leading-relaxed mb-14">
-          A Revival Conference é o maior encontro interdenominacional de avivamento do Norte do Brasil. Nasceu do desejo de posicionar Belém e a Amazônia no mapa do mover de Deus — reunindo igrejas, líderes e gerações em torno de um único propósito: avivamento genuíno.
+          A Revival Conference nasceu com um propósito claro: gerar avivamento em Belém e posicionar o Norte do Brasil dentro do que Deus está fazendo nesta geração.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -14,10 +14,10 @@ const NewDawnSection = () => {
         </h2>
 
         <p className="font-inter text-rvl-creme/90 max-w-xl text-center leading-relaxed">
-          Uma nova estação se abre. Não pela força dos homens — mas pela soberania de Deus sobre os tempos. Cristo é o nosso amanhecer.
+          O tema da Revival Conference 2026 nasce de uma convicção: noites foram e ainda estão sendo atravessadas, mas uma nova estação se abre. Como nação, reconhecemos que vivemos tempos desafiadores e, por vezes, sombrios. Ainda assim, cremos que nada foge da soberania de Deus.
         </p>
 
-        <blockquote className="border border-rvl-creme/50 p-6 max-w-xl mx-auto text-center font-caveat text-xl md:text-2xl text-rvl-creme">
+        <blockquote className="border border-rvl-creme/50 p-6 max-w-xl mx-auto text-center font-caveat text-xl md:text-2xl text-rvl-creme mb-6">
           "Este amanhecer não nasce da esperança depositada em homens. Nasce da confiança no Senhor."
         </blockquote>
 
