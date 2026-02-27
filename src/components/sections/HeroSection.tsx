@@ -1,6 +1,6 @@
 const HeroSection = () => {
   return (
-    <section className="hero-gradient relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 py-20">
+    <section className="hero-gradient relative min-h-[75vh] md:min-h-[85vh] flex flex-col items-center justify-center overflow-hidden px-6 py-16 md:py-20">
       {/* Noise overlay */}
       <div className="hero-noise absolute inset-0 pointer-events-none z-[1]" />
 

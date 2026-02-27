@@ -1,6 +1,6 @@
 const NewDawnSection = () => {
   return (
-    <section className="climax-gradient relative min-h-screen flex flex-col items-center justify-center px-6 py-20">
+    <section className="climax-gradient relative min-h-[70vh] md:min-h-[80vh] flex flex-col items-center justify-center px-6 py-16 md:py-20">
       {/* Noise overlay */}
       <div className="hero-noise absolute inset-0 pointer-events-none z-[1]" />
 
