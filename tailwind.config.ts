@@ -13,6 +13,11 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        bebas: ['"Bebas Neue"', 'cursive'],
+        inter: ['"Inter"', 'sans-serif'],
+        caveat: ['"Caveat"', 'cursive'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -46,6 +51,16 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        rvl: {
+          creme: "hsl(var(--rvl-creme))",
+          "creme-bg": "hsl(var(--rvl-creme-bg))",
+          laranja: "hsl(var(--rvl-laranja))",
+          vermelho: "hsl(var(--rvl-vermelho))",
+          amarelo: "hsl(var(--rvl-amarelo))",
+          azul: "hsl(var(--rvl-azul))",
+          escuro: "hsl(var(--rvl-escuro))",
+          "exp-bg": "hsl(var(--rvl-exp-bg))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
