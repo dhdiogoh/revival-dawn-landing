@@ -5,27 +5,13 @@ const HeroSection = () => {
       <div className="hero-noise absolute inset-0 pointer-events-none z-[1]" />
 
       <div className="relative z-[2] flex flex-col items-center gap-6 md:gap-8">
-        {/* Logo area */}
-        <div className="relative flex items-center justify-center gap-4 md:gap-8">
-          <span className="hidden md:block font-inter text-rvl-creme uppercase tracking-widest text-xl md:text-2xl">
-            UM NOVO
-          </span>
-          <img
-            src="/images/rvl-26-logo-png.png"
-            alt="Revival Conference 26 Logo"
-            className="w-[260px] md:w-[420px]"
-            style={{ mixBlendMode: 'screen' }}
-          />
-          <span className="hidden md:block font-inter text-rvl-creme uppercase tracking-widest text-xl md:text-2xl">
-            AMANHECER
-          </span>
-        </div>
-
-        {/* Mobile subtitle */}
-        <div className="flex gap-6 md:hidden">
-          <span className="font-inter text-rvl-creme uppercase tracking-widest text-lg">UM NOVO</span>
-          <span className="font-inter text-rvl-creme uppercase tracking-widest text-lg">AMANHECER</span>
-        </div>
+        {/* Logo */}
+        <img
+          src="/images/rvl-26-logo-png.png"
+          alt="Revival Conference 26 Logo"
+          className="w-[340px] md:w-[580px]"
+          style={{ mixBlendMode: 'screen' }}
+        />
 
         <p className="font-inter text-rvl-creme uppercase tracking-[0.4em] text-base md:text-lg">
           CONFERENCE 26'
