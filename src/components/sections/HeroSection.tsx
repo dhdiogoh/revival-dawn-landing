@@ -62,7 +62,7 @@ const HeroSection = ({ animateIn }: HeroSectionProps) => {
         <img
           src="/images/rvl-26-logo-adjust.png"
           alt="Revival Conference 26 Logo"
-          className="w-[280px] sm:w-[350px] md:w-[560px] lg:w-[700px] max-w-[90vw] relative z-0"
+          className="w-[340px] sm:w-[350px] md:w-[560px] lg:w-[700px] max-w-[92vw] relative z-0"
           style={{
             mixBlendMode: 'screen',
             opacity: animated ? 1 : 0,
@@ -75,7 +75,7 @@ const HeroSection = ({ animateIn }: HeroSectionProps) => {
         <div className="flex flex-col items-center gap-6 md:gap-7 relative z-10 w-full px-6">
           {/* Date pill */}
           <div
-            className="border border-rvl-creme/50 rounded-full px-4 py-1.5 text-rvl-creme text-sm md:text-base font-inter bg-rvl-escuro/20 backdrop-blur-sm"
+            className="border border-rvl-creme/50 rounded-full px-3 py-1 sm:px-4 sm:py-1.5 text-rvl-creme text-xs sm:text-sm md:text-base font-inter bg-rvl-escuro/20 backdrop-blur-sm"
             style={{
               opacity: animated ? 1 : 0,
               transform: animated ? 'translateY(0)' : 'translateY(16px)',
