@@ -26,7 +26,7 @@ export function ImageCarousel({ images, altPrefix }: { images: string[], altPref
     if (!images || images.length === 0) return null;
 
     return (
-        <div className="relative w-full max-w-sm aspect-[4/3] rounded-xl overflow-hidden shadow-lg group">
+        <div className="relative w-full h-full min-h-[300px] aspect-[4/3] md:aspect-auto rounded-xl overflow-hidden shadow-lg group">
             {images.map((img, idx) => (
                 <img
                     key={idx}

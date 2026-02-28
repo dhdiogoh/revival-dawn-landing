@@ -18,7 +18,7 @@ const GameScreen = () => {
   const navigate = useNavigate();
   const { setFromGame, setTransitionProgress } = useTransition();
   const [gameState, setGameState] = useState<GameState>('idle');
-  const [sunTop, setSunTop] = useState(-80);
+  const [sunTop, setSunTop] = useState(window.innerHeight + 100);
   const [isShaking, setIsShaking] = useState(false);
   const [isSnapping, setIsSnapping] = useState(false);
   const [sunCenter, setSunCenter] = useState({ x: 0, y: 0 });
@@ -32,12 +32,12 @@ const GameScreen = () => {
   };
 
   const getTargetY = () => {
-    // Target center is at 75% of viewport height
-    return window.innerHeight * 0.75 - getSunSize() / 2;
+    // Target center is at 65% of viewport height
+    return window.innerHeight * 0.65 - getSunSize() / 2;
   };
 
-  const getStartY = () => -getSunSize() - 20;
-  const getEndY = () => window.innerHeight + getSunSize();
+  const getStartY = () => window.innerHeight + getSunSize();
+  const getEndY = () => -getSunSize() - 20;
 
   const animate = useCallback((timestamp: number) => {
     if (!startTimeRef.current) startTimeRef.current = timestamp;
@@ -151,11 +151,12 @@ const GameScreen = () => {
       {/* Retaguarda: LandingPage invisível até o reveal */}
       {gameState !== 'idle' && gameState !== 'playing' && gameState !== 'fail' && (
         <div
-          className="absolute inset-0 z-0 bg-background"
+          className="absolute inset-0 z-0"
           style={{
             opacity: gameState === 'revealing' ? 1 : 0,
-            transition: 'opacity 2s ease-in-out',
-            pointerEvents: 'none'
+            transition: 'opacity 1.5s ease-in-out',
+            pointerEvents: 'none',
+            backgroundColor: '#E8622A',
           }}
         >
           <Index animateIn={gameState === 'revealing'} />
@@ -199,43 +200,49 @@ const GameScreen = () => {
       </div>
 
       {/* Light leak orgânico nascendo do centro do sol */}
-      {(gameState === 'leaking' || gameState === 'revealing') && (
+      {(gameState === 'locked' || gameState === 'leaking' || gameState === 'revealing') && (
         <div
-          className="absolute inset-0 z-20 pointer-events-none"
+          className="absolute inset-0 pointer-events-none"
           style={{
+            zIndex: 20,
             background: `radial-gradient(
-              ellipse 80% 60% at ${sunCenter.x}px ${sunCenter.y}px,
-              rgba(255, 248, 220, 0.95) 0%,
-              rgba(245, 200, 66, 0.7)   15%,
-              rgba(245, 130, 58, 0.5)   35%,
-              rgba(232, 53, 42, 0.25)   55%,
-              rgba(91, 184, 212, 0.1)   75%,
-              transparent               100%
+              ellipse 80% 70% at ${sunCenter.x}px ${sunCenter.y}px,
+              rgba(230, 98,  42,  0.92) 0%,
+              rgba(220, 60,  30,  0.80) 20%,
+              rgba(200, 50,  30,  0.60) 40%,
+              rgba(91,  150, 190, 0.30) 65%,
+              rgba(70,  130, 180, 0.10) 82%,
+              transparent                100%
             )`,
-            opacity: gameState === 'leaking' ? 0 : 1,
+            opacity: gameState === 'locked' ? 0
+              : gameState === 'leaking' ? 0.92
+                : 0,
             transition: gameState === 'leaking'
               ? 'opacity 2s cubic-bezier(0.16, 1, 0.3, 1)'
-              : 'opacity 2s cubic-bezier(0.7, 0, 0.84, 0)',
-            backgroundSize: gameState === 'leaking' ? '100% 100%' : '300% 300%',
+              : 'opacity 1.8s ease-in-out',
           }}
         />
       )}
 
-      {/* Light leak extra - mais difuso para luz lateral */}
-      {(gameState === 'leaking' || gameState === 'revealing') && (
+      {/* Light leak extra — mais difuso para profundidade */}
+      {(gameState === 'locked' || gameState === 'leaking' || gameState === 'revealing') && (
         <div
-          className="absolute inset-0 z-19 pointer-events-none"
+          className="absolute inset-0 pointer-events-none"
           style={{
+            zIndex: 19,
             background: `radial-gradient(
-              ellipse 140% 100% at ${sunCenter.x}px ${sunCenter.y}px,
-              rgba(245, 200, 66, 0.3)  0%,
-              rgba(245, 130, 58, 0.15) 30%,
-              rgba(232, 53, 42, 0.05)  60%,
-              transparent              100%
+              ellipse 200% 150% at ${sunCenter.x}px ${sunCenter.y}px,
+              rgba(200, 80,  30,  0.3)  0%,
+              rgba(180, 60,  30,  0.2)  25%,
+              rgba(160, 45,  30,  0.1)  50%,
+              rgba(70,  130, 180, 0.05) 75%,
+              transparent                100%
             )`,
-            opacity: gameState === 'leaking' ? 0 : 0.8,
+            opacity: gameState === 'locked' ? 0
+              : gameState === 'leaking' ? 0.85
+                : 0,
             transition: 'opacity 2.5s cubic-bezier(0.16, 1, 0.3, 1)',
-            transform: gameState === 'leaking' ? 'scale(0.6)' : 'scale(1.4)',
+            transform: gameState === 'locked' ? 'scale(0.5)' : 'scale(1.3)',
             transformOrigin: `${sunCenter.x}px ${sunCenter.y}px`,
             transitionProperty: 'opacity, transform',
           }}

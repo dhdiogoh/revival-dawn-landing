@@ -17,6 +17,8 @@ export default {
         bebas: ['"Bebas Neue"', 'cursive'],
         inter: ['"Inter"', 'sans-serif'],
         caveat: ['"Caveat"', 'cursive'],
+        teenage: ['"Teenage Dreams Demo Bold"', '"Teenage Dreams Demo"', 'cursive'],
+        antarctican: ['"Antarctican Mono"', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",

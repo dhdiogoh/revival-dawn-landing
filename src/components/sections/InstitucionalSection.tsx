@@ -11,9 +11,23 @@ const InstitucionalSection = () => {
         <h2 className="font-bebas text-4xl md:text-6xl text-rvl-escuro tracking-wide mb-6">
           O QUE É A REVIVAL CONFERENCE?
         </h2>
-        <p className="font-inter text-rvl-escuro/80 text-base md:text-lg max-w-3xl leading-relaxed mb-14">
-          A Revival Conference nasceu com um propósito claro: gerar avivamento em Belém e posicionar o Norte do Brasil dentro do que Deus está fazendo nesta geração.
-        </p>
+        <div className="font-inter text-rvl-escuro/80 text-base md:text-lg max-w-4xl leading-relaxed mb-14 space-y-4">
+          <p>
+            A Revival Conference nasceu com um propósito de servir a cidade, clamar pelo avivamento em
+            Belém e posicionar o Norte do Brasil dentro do que Deus está fazendo nesta geração.
+            Cremos que vivemos um tempo profético, de ativação, maturidade e responsabilidade espiritual.
+          </p>
+          <p>
+            A RVL não é apenas um evento anual. É um movimento contínuo de alinhamento, presença e
+            ativação. Buscamos fortalecer cristãos saudáveis, promover unidade entre igrejas, ativar dons e chamados
+            e levar o Reino de Deus às esferas da sociedade.
+          </p>
+          <p>
+            Em 2024, iniciamos a RVL CULTURE, movimento de ativação além das quatro paredes da igreja,
+            levando a cultura do Reino. Visitamos sete igrejas e quatro cidades na região, clamando, nos
+            movendo no profético, adorando e fluindo no sobrenatural, cura e libertação. Esse ano tem mais!
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {cards.map((c) => (

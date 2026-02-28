@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
+@font-face {
+  font-family: 'Teenage Dreams Demo Bold';
+  src: url('/fonts/TeenageDreamsFont-Demo-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Antarctican Mono';
+  src: url('/fonts/antarctican-font/AntarcticanMono-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -64,7 +80,8 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background-color: #1A1A1A;
   }
 
   html {
@@ -134,6 +151,10 @@
   .font-caveat {
     font-family: 'Caveat', cursive;
   }
+
+  .font-teenage {
+    font-family: 'Teenage Dreams Demo Bold', 'Teenage Dreams Demo', 'Caveat', cursive;
+  }
 }
 
 @layer components {
@@ -151,7 +172,7 @@
   .game-sky {
     position: absolute;
     inset: 0;
-    bottom: 25%;
+    bottom: 35%;
     background: linear-gradient(180deg,
         #1a0a2e 0%,
         #5BB8D4 50%,
@@ -172,7 +193,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 25%;
+    height: 35%;
     background: #0d0d0d;
   }
 
@@ -180,7 +201,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 75%;
+    top: 65%;
     height: 2px;
     background: #F5823A;
     box-shadow: 0 0 20px 6px rgba(245, 130, 58, 0.4);
@@ -215,7 +236,7 @@
     background: transparent;
     position: absolute;
     left: 50%;
-    top: 75%;
+    top: 65%;
     transform: translate(-50%, -50%);
     z-index: 2;
     pointer-events: none;
@@ -306,25 +327,33 @@
 
   .dawn-flash {
     animation: flash 1.2s ease-out forwards;
-    background: radial-gradient(circle at 50% 75%, #F5C842, #F5823A, transparent 70%);
+    background: radial-gradient(circle at 50% 65%,
+        rgba(255, 235, 150, 1) 0%,
+        rgba(245, 200, 66, 0.95) 8%,
+        rgba(245, 130, 58, 0.88) 20%,
+        rgba(232, 98, 42, 0.80) 35%,
+        rgba(232, 53, 42, 0.60) 50%,
+        rgba(91, 184, 212, 0.30) 72%,
+        rgba(91, 184, 212, 0.08) 88%,
+        transparent 100%);
   }
 
   @keyframes solPulse {
     0% {
-      box-shadow: 0 0 20px 8px #F5C84266, 0 0 40px 16px #F5823A33;
+      box-shadow: 0 0 20px 8px rgba(245, 200, 66, 0.4), 0 0 40px 20px rgba(245, 130, 58, 0.2);
     }
 
     50% {
-      box-shadow: 0 0 40px 20px #F5C842AA, 0 0 80px 40px #F5823A66;
+      box-shadow: 0 0 50px 25px rgba(245, 200, 66, 0.7), 0 0 90px 50px rgba(232, 53, 42, 0.3);
     }
 
     100% {
-      box-shadow: 0 0 20px 8px #F5C84266, 0 0 40px 16px #F5823A33;
+      box-shadow: 0 0 20px 8px rgba(245, 200, 66, 0.4), 0 0 40px 20px rgba(245, 130, 58, 0.2);
     }
   }
 
   .game-sun--locked {
-    animation: solPulse 0.8s ease-in-out infinite;
+    animation: solPulse 1s ease-in-out infinite;
   }
 
   @keyframes dawn-text-in {
@@ -352,4 +381,28 @@
       transform: translateX(-33.333%);
     }
   }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
+
+/* Scrollbar hide utility */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Play } from 'lucide-react';
+import TestimonyCard from '../TestimonyCard';
 
 const VideoEmbed = ({ videoId }: { videoId: string }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -49,9 +50,10 @@ const TestimonialsSection = () => {
           Ao longo das edições, testemunhamos intervenções claras da fidelidade de Deus.
         </p>
 
-        <div className="flex flex-col md:flex-row gap-8 justify-center items-center w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center max-w-5xl mx-auto">
           <VideoEmbed videoId="8EljWvT2fq0" />
           <VideoEmbed videoId="YWGMmmm6k4s" />
+          <TestimonyCard />
         </div>
       </div>
     </section>

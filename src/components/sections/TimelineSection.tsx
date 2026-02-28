@@ -12,12 +12,12 @@ const TimelineSection = () => {
   return (
     <section className="bg-rvl-creme-bg py-20 md:py-28 px-6">
       <div className="max-w-4xl mx-auto">
-        <h2 className="font-bebas text-4xl md:text-6xl text-rvl-escuro tracking-wide text-center mb-2">
-          NOSSA HISTÓRIA
+        <h2 className="font-bebas text-4xl md:text-6xl text-rvl-escuro tracking-wide text-center mb-6">
+          O QUE JÁ VIVEMOS
         </h2>
-        <p className="font-inter text-rvl-escuro/60 text-center mb-16">
-          Cinco edições. Cinco capítulos de história.
-        </p>
+        <div className="font-inter text-rvl-escuro/80 text-center max-w-3xl mx-auto leading-relaxed mb-16 px-4">
+          Desde 2021, cada edição carregou um tema que marcou uma estação. Oramos e ouvimos de Deus de forma profética, nos posicionando, clamando e ativando o que Ele estava falando para que pudesse ser vivido, compartilhado e alcançar cada canto da nossa cidade.
+        </div>
 
         <div className="relative">
           {/* Center line */}

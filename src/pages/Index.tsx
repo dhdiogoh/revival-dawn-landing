@@ -2,9 +2,12 @@ import HeroSection from '@/components/sections/HeroSection';
 import { useTransition } from '@/context/TransitionContext';
 import InstitucionalSection from '@/components/sections/InstitucionalSection';
 import TimelineSection from '@/components/sections/TimelineSection';
+import RvlCultureSection from '@/components/sections/RvlCultureSection';
 import ExperienceSection from '@/components/sections/ExperienceSection';
+import ProgramacaoSection from '@/components/sections/ProgramacaoSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import NewDawnSection from '@/components/sections/NewDawnSection';
+import QuandoOndeSection from '@/components/sections/QuandoOndeSection';
 import FormSection from '@/components/sections/FormSection';
 import FooterSection from '@/components/sections/FooterSection';
 
@@ -26,9 +29,12 @@ const Index = ({ animateIn }: IndexProps) => {
       <HeroSection animateIn={animateIn} />
       <InstitucionalSection />
       <TimelineSection />
+      <RvlCultureSection />
       <ExperienceSection />
+      <ProgramacaoSection />
       <TestimonialsSection />
       <NewDawnSection />
+      <QuandoOndeSection />
       <FormSection />
       <FooterSection />
     </main>
