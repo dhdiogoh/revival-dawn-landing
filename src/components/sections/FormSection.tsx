@@ -97,7 +97,7 @@ const FormSection = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             <div>
-              <p className="text-rvl-laranja font-medium mb-1 uppercase tracking-wider text-sm">Quero receber novidades</p>
+              <p className="font-inter text-rvl-laranja font-medium mb-1 uppercase tracking-wider text-sm">Quero receber novidades</p>
               <h2 className="font-bebas text-4xl md:text-5xl text-rvl-escuro tracking-wide mb-3">
                 PREENCHA E RECEBA VOUCHERS EXCLUSIVOS!
               </h2>
@@ -176,7 +176,7 @@ const FormSection = () => {
                   'QUERO FAZER PARTE'
                 )}
               </button>
-              <p className="text-xs text-muted-foreground flex items-center justify-center gap-1.5 mt-4">
+              <p className="font-inter text-xs text-muted-foreground flex items-center justify-center gap-1.5 mt-4">
                 <ShieldCheck className="w-4 h-4 text-rvl-laranja/70" /> Dados salvos com segurança. Sem spam.
               </p>
             </form>

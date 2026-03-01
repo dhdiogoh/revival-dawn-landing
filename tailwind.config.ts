@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        bebas: ['"Bebas Neue"', 'cursive'],
+        bebas: ['"Bebas Neue"', 'sans-serif'],
         inter: ['"Inter"', 'sans-serif'],
         caveat: ['"Caveat"', 'cursive'],
         teenage: ['"Teenage Dreams Demo Bold"', '"Teenage Dreams Demo"', 'cursive'],

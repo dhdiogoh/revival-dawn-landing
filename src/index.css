@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @font-face {
   font-family: 'Teenage Dreams Demo Bold';
@@ -88,7 +88,15 @@
 
   body {
     @apply text-foreground;
+    font-family: 'Inter', sans-serif;
     background-color: #1A1A1A;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: 'Bebas Neue', sans-serif;
   }
 
   html {
@@ -148,7 +156,7 @@
 
 @layer utilities {
   .font-bebas {
-    font-family: 'Bebas Neue', cursive;
+    font-family: 'Bebas Neue', sans-serif;
   }
 
   .font-inter {
