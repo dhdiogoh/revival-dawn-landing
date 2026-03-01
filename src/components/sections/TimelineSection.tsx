@@ -1,8 +1,8 @@
 import { ImageCarousel } from '../ImageCarousel';
 
 const editions = [
-  { year: '2021', theme: 'Do It Again', desc: 'Um clamor para que Deus repetisse em nossa geração o que Ele já havia feito em outras.', side: 'left', images: ['/images/rvl-21-images/gustavo-paiva-rvl-21.JPG', '/images/rvl-21-images/vitor-ledo-rvl-21.JPG'] },
-  { year: '2022', theme: 'Unidade', desc: 'Firmados em João 17, declarando uma Igreja unida, alinhada e fundamentada em Cristo.', side: 'right', images: ['/images/rvl-22-images/correder-de-fogo-rvl-22.JPG', '/images/rvl-22-images/dunamis-rvl-22.jpg'] },
+  { year: '2021', theme: 'Faz De Novo', desc: 'Um clamor para que Deus repetisse em nossa geração o que Ele já havia feito em outras.', side: 'left', images: ['/images/rvl-21-images/gustavo-paiva-rvl-21.JPG', '/images/rvl-21-images/vitor-ledo-rvl-21.JPG'] },
+  { year: '2022', theme: 'Somos Um', desc: 'Firmados em João 17, declarando uma Igreja unida, alinhada e fundamentada em Cristo.', side: 'right', images: ['/images/rvl-22-images/correder-de-fogo-rvl-22.JPG', '/images/rvl-22-images/dunamis-rvl-22.jpg'] },
   { year: '2023', theme: 'Manifesto', desc: 'Baseado em Romanos 8.19, anunciando uma geração que se manifesta como filhos de Deus no mundo.', side: 'left', images: ['/images/rvl-23-images/corredor-de-fogo-rvl-23.JPG', '/images/rvl-23-images/fhop-rvl-23.jpg'] },
   { year: '2024', theme: 'Atos', desc: 'Inspirados pela Igreja primitiva, vivendo o evangelho de forma prática, viva e transformadora.', side: 'right', images: ['/images/rvl-24-images/revival-box-dunamis-rvl-24.jpg', '/images/rvl-24-images/sala-profetica-rvl-24.jpg'] },
   { year: '2025', theme: 'Reset', desc: 'Um ano intencional de pausa, alinhamento e discernimento. Não era tempo de palcos — era tempo de processos. Tempo de responder a Deus e preparar o terreno para o que Ele estava construindo.', side: 'left' },
@@ -11,11 +11,11 @@ const editions = [
 const TimelineSection = () => {
   return (
     <section className="bg-rvl-creme-bg py-20 md:py-28 px-6">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="font-bebas text-4xl md:text-6xl text-rvl-escuro tracking-wide text-center mb-6">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="font-bebas text-4xl md:text-6xl text-rvl-escuro tracking-wide text-left mb-6">
           O QUE JÁ VIVEMOS
         </h2>
-        <div className="font-inter text-rvl-escuro/80 text-center max-w-3xl mx-auto leading-relaxed mb-16 px-4">
+        <div className="font-inter text-rvl-escuro/80 text-left max-w-4xl leading-relaxed mb-16">
           Desde 2021, cada edição carregou um tema que marcou uma estação. Oramos e ouvimos de Deus de forma profética, nos posicionando, clamando e ativando o que Ele estava falando para que pudesse ser vivido, compartilhado e alcançar cada canto da nossa cidade.
         </div>
 

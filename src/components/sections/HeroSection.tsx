@@ -55,7 +55,7 @@ const HeroSection = ({ animateIn }: HeroSectionProps) => {
   const marqueeDelay = fromGame ? '750ms' : '0ms';
 
   return (
-    <section className="hero-gradient relative h-[100dvh] min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden">
+    <section className="hero-gradient relative h-[100dvh] min-h-[100dvh] overflow-hidden">
       <SunRise />
 
       {/* Noise overlay */}
@@ -73,27 +73,23 @@ const HeroSection = ({ animateIn }: HeroSectionProps) => {
         }}
       />
 
-      <div className="relative z-[2] flex flex-col items-center w-full max-w-5xl mx-auto">
+      {/* Container que centraliza o conteúdo no espaço acima do banner */}
+      <div
+        className="relative z-[2] flex flex-col items-center justify-center w-full max-w-5xl mx-auto"
+        style={{ height: 'calc(100dvh - var(--banner-h))' }}
+      >
         <img
-          src="/images/logo-rvl-26-oficial.png"
+          src="/images/logo-um-novo-amanhecer.png"
           alt="Revival Conference 26 Logo"
-          className="w-[400px] sm:w-[450px] md:w-[600px] lg:w-[720px] max-w-[96vw] relative z-0 drop-shadow-[0_0_25px_rgba(251,244,228,0.4)] md:drop-shadow-none"
+          className="w-[300px] sm:w-[306px] md:w-[408px] lg:w-[490px] max-w-[90vw] relative z-0 mb-4 md:mb-6"
           style={{
             mixBlendMode: 'screen',
+            filter: 'drop-shadow(0 0 18px rgba(251,244,228,0.35)) drop-shadow(0 0 60px rgba(245,130,58,0.15))',
             ...getElementStyle(logoDelay),
           }}
         />
 
-        {/* Tema da conferência */}
-        <h2
-          className="font-antarctican text-rvl-creme text-2xl sm:text-3xl md:text-4xl tracking-[0.35em] uppercase mt-2 md:mt-4 mb-6 md:mb-10"
-          style={{
-            ...getElementStyle(logoDelay),
-            textShadow: '0 0 20px rgba(251,244,228,0.5), 0 0 40px rgba(245,130,58,0.3)',
-          }}
-        >
-          NOVO AMANHECER
-        </h2>
+
 
         <div className="flex flex-col items-center gap-6 md:gap-7 relative z-10 w-full px-6">
           {/* Date pill */}

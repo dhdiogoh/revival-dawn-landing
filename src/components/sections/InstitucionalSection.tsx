@@ -22,11 +22,6 @@ const InstitucionalSection = () => {
             ativação. Buscamos fortalecer cristãos saudáveis, promover unidade entre igrejas, ativar dons e chamados
             e levar o Reino de Deus às esferas da sociedade.
           </p>
-          <p>
-            Em 2024, iniciamos a RVL CULTURE, movimento de ativação além das quatro paredes da igreja,
-            levando a cultura do Reino. Visitamos sete igrejas e quatro cidades na região, clamando, nos
-            movendo no profético, adorando e fluindo no sobrenatural, cura e libertação. Esse ano tem mais!
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -48,11 +48,11 @@ const TestimonyCard = () => {
                 <div
                     className="flex-1 mt-6 overflow-y-auto scrollbar-hide"
                     style={{
-                        maskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 85%, transparent 100%)',
-                        WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 85%, transparent 100%)',
+                        maskImage: 'linear-gradient(to bottom, transparent 0%, black 2%, black 93%, transparent 100%)',
+                        WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 2%, black 93%, transparent 100%)',
                     }}
                 >
-                    <p className="font-caveat text-[#F5EDD8] text-base leading-relaxed">
+                    <p className="font-inter text-[#F5EDD8] text-base leading-relaxed">
                         &ldquo;Em 2023, eu e meu marido estávamos afundados em dívidas. O cartão estava estourado com juros e as contas que não fechavam. Nós dois trabalhávamos, mas nos perdemos nas finanças e quando fizemos as contas, devíamos um valor muito alto, que ia além da nossa realidade. Como iríamos resolver? Não sabíamos. Mas seguimos servindo ao Senhor, amando pessoas e sendo fiéis.
                         <br /><br />
                         Fomos para RVL Conference, dias incríveis, em um momento específico, ouvimos de Deus em fazer uma entrega. No momento dos dízimos e ofertas, entregamos todo o valor que tínhamos na conta. No dia seguinte, recebemos uma ligação e uma pessoa disse que o Senhor havia direcionado ela para ofertar em nossa vida.

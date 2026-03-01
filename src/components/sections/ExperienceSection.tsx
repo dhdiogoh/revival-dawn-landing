@@ -19,7 +19,7 @@ const speakers = [
   { name: 'Mayra Ledo', image: '/images/preletores-rvl/iloveimg-compressed/mayra-ledo-rvl.jpeg' },
   { name: 'Gustavo Paiva', image: '/images/preletores-rvl/iloveimg-compressed/gustavo-paiva-rvl.jpeg' },
   { name: 'Gilberto Araujo', image: '/images/preletores-rvl/iloveimg-compressed/gilberto-araujo-rvl.jpeg' },
-  { name: 'Cantarino', image: '/images/preletores-rvl/iloveimg-compressed/gabriel-cantarion-rvl.jpeg' },
+  { name: 'Gabriel Cantarino', image: '/images/preletores-rvl/iloveimg-compressed/gabriel-cantarion-rvl.jpeg' },
   { name: 'Dênio Lara', image: '/images/preletores-rvl/iloveimg-compressed/denio-lara-rvl.jpeg' },
   { name: 'Daniel Kalta', image: '/images/preletores-rvl/iloveimg-compressed/daniel-kalta-rvl.jpeg' },
   { name: 'Alessandro Paiva', image: '/images/preletores-rvl/iloveimg-compressed/alessandro-paiva-rvl.jpeg' },
