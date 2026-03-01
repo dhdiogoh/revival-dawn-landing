@@ -91,10 +91,10 @@ const HeroSection = ({ animateIn }: HeroSectionProps) => {
 
 
 
-        <div className="flex flex-col items-center gap-6 md:gap-7 relative z-10 w-full px-6">
+        <div className="flex flex-col items-center gap-5 md:gap-7 relative z-10 w-full px-4 sm:px-6">
           {/* Date pill */}
           <div
-            className="border border-rvl-creme/50 rounded-full px-3 py-1 sm:px-4 sm:py-1.5 text-rvl-creme text-xs sm:text-sm md:text-base font-inter bg-rvl-escuro/20 backdrop-blur-sm"
+            className="border border-rvl-creme/50 rounded-full px-3 py-1 sm:px-4 sm:py-1.5 text-rvl-creme text-[11px] sm:text-sm md:text-base font-inter bg-rvl-escuro/20 backdrop-blur-sm whitespace-nowrap"
             style={getElementStyle(dateDelay)}
           >
             08 e 09 de Maio de 2026 — Hangar, Belém/PA
@@ -106,10 +106,10 @@ const HeroSection = ({ animateIn }: HeroSectionProps) => {
             style={getElementStyle(verseDelay)}
           >
             <div className="text-left px-2">
-              <span className="font-inter font-medium text-[16px] md:text-[18px] lowercase tracking-wide opacity-90 block mb-1">
+              <span className="font-inter font-medium lowercase tracking-wide opacity-90 block mb-1" style={{ fontSize: 'clamp(12px, 3.8vw, 18px)' }}>
                 o choro pode <span className="line-through decoration-[2px] decoration-[#fff2dc]/90">durar uma noite</span>,
               </span>
-              <span className="font-teenage text-[20px] md:text-[26px] uppercase block leading-tight">
+              <span className="font-teenage uppercase block leading-tight" style={{ fontSize: 'clamp(14px, 4.5vw, 26px)' }}>
                 MAS A ALEGRIA VEM PELA MANHÃ...
               </span>
             </div>
@@ -123,7 +123,7 @@ const HeroSection = ({ animateIn }: HeroSectionProps) => {
           {/* CTA */}
           <a
             href="#formulario"
-            className="bg-rvl-creme text-rvl-escuro rounded-full px-10 py-4 font-inter font-bold text-base md:text-lg uppercase tracking-wide hover:opacity-90 hover:scale-105 shadow-[0_0_30px_rgba(251,244,228,0.3)] mt-2"
+            className="bg-rvl-creme text-rvl-escuro rounded-full px-6 py-3 sm:px-10 sm:py-4 font-inter font-bold text-xs sm:text-sm md:text-lg uppercase tracking-wide hover:opacity-90 hover:scale-105 shadow-[0_0_30px_rgba(251,244,228,0.3)] mt-2 whitespace-nowrap"
             style={getElementStyle(ctaDelay)}
           >
             QUERO RECEBER NOVIDADES ↓
