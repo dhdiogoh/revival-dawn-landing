@@ -34,7 +34,7 @@ const speakers = [
 
 const worshipMinistries = [
   { name: 'Link Music', image: '/images/preletores-rvl/ministerios-adoracao-compressed/link-music-rvl.jpeg' },
-  { name: 'Dunamis Music', image: '/images/preletores-rvl/ministerios-adoracao-compressed/dunamis-music-rvl.jpeg' },
+  { name: 'Dunamis Music', image: '/images/preletores-rvl/dunamis-music-rvl-new (1).jpeg' },
   { name: 'FHOP Music', image: '/images/preletores-rvl/ministerios-adoracao-compressed/fhop-music-rvl.jpg' },
 ];
 
