@@ -27,7 +27,7 @@ const NewDawnSection = () => {
             E quanto maior a escuridão, mais visível se torna a luz que a Igreja do Senhor carrega.
             Cremos que Deus está se movendo sobre a Igreja no Brasil, e que este é um tempo de posicionamento, entrega, busca e fluir no Espírito Santo.
           </p>
-          <div className="text-rvl-creme font-bebas tracking-widest text-2xl md:text-3xl pt-4 pb-2 space-y-1">
+          <div className="text-rvl-creme font-bebas tracking-widest text-xl md:text-3xl pt-4 pb-2 space-y-1">
             <p>UM TEMPO DE AVIVAMENTO PARA A IGREJA.</p>
             <p>PARA O NORTE DO BRASIL.</p>
             <p>E PARA AS NAÇÕES!</p>
