@@ -2,7 +2,7 @@ const FooterSection = () => {
   return (
     <footer className="bg-rvl-escuro py-16 px-6">
       <div className="max-w-5xl mx-auto text-center">
-        <img src="/images/rvl-26-logo-adjust.png" alt="Revival Conference Logo" className="w-48 md:w-56 mx-auto mb-6 opacity-90" />
+        <img src="/images/rvl-26-logo-adjust.png" alt="Revival Conference Logo" className="w-48 md:w-56 mx-auto mb-6 opacity-90 mix-blend-screen" />
         <p className="font-inter text-sm text-muted-foreground mb-6">
           08 e 09 de maio de 2026 — Hangar, Belém/PA
         </p>

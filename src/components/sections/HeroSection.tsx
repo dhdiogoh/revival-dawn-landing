@@ -83,6 +83,7 @@ const HeroSection = ({ animateIn }: HeroSectionProps) => {
           alt="Revival Conference 26 Logo"
           className="w-[300px] sm:w-[306px] md:w-[408px] lg:w-[490px] max-w-[90vw] relative z-0 mb-4 md:mb-6"
           style={{
+            mixBlendMode: 'screen',
             filter: 'drop-shadow(0 0 18px rgba(251,244,228,0.35)) drop-shadow(0 0 60px rgba(245,130,58,0.15))',
             ...getElementStyle(logoDelay),
           }}
