@@ -27,13 +27,13 @@ const Index = ({ animateIn }: IndexProps) => {
     >
       <HeroSection animateIn={animateIn} />
       <InstitucionalSection />
+      <PreSaleSection />
       <TimelineSection />
       <ExperienceSection />
       <ProgramacaoSection />
       <TestimonialsSection />
       <NewDawnSection />
       <QuandoOndeSection />
-      <PreSaleSection />
       <FooterSection />
     </main>
   );
