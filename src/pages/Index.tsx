@@ -7,7 +7,7 @@ import ProgramacaoSection from '@/components/sections/ProgramacaoSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import NewDawnSection from '@/components/sections/NewDawnSection';
 import QuandoOndeSection from '@/components/sections/QuandoOndeSection';
-import FormSection from '@/components/sections/FormSection';
+import PreSaleSection from '@/components/sections/PreSaleSection';
 import FooterSection from '@/components/sections/FooterSection';
 
 interface IndexProps {
@@ -33,7 +33,7 @@ const Index = ({ animateIn }: IndexProps) => {
       <TestimonialsSection />
       <NewDawnSection />
       <QuandoOndeSection />
-      <FormSection />
+      <PreSaleSection />
       <FooterSection />
     </main>
   );
