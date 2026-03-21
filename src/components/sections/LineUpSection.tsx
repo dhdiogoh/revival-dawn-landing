@@ -1,17 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { supabase } from '@/lib/supabase';
 
-const VIDEO_ID = 'VcetbzdZ5uY';
+const FALLBACK_VIDEO_ID = 'VcetbzdZ5uY';
+
+const extractVideoId = (url: string) => {
+  const match = url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  return match ? match[1] : url;
+};
 
 const LineUpSection = () => {
   const [playing, setPlaying] = useState(false);
+  const [videoId, setVideoId] = useState(FALLBACK_VIDEO_ID);
+
+  useEffect(() => {
+    supabase
+      .from('settings')
+      .select('value')
+      .eq('key', 'lineup_video_url')
+      .single()
+      .then(({ data }) => {
+        if (data?.value) setVideoId(extractVideoId(data.value));
+      });
+  }, []);
 
   return (
-    <section className="bg-rvl-creme-bg py-16 px-4">
+    <section className="bg-rvl-creme-bg pt-10 pb-0 px-4">
       <div className="max-w-3xl mx-auto">
         {playing ? (
           <iframe
             className="w-full aspect-video rounded-lg"
-            src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1`}
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
             title="Line Up Revival Conference 26"
             allow="autoplay; encrypted-media"
             allowFullScreen
@@ -23,7 +41,7 @@ const LineUpSection = () => {
             aria-label="Reproduzir vídeo Line Up"
           >
             <img
-              src={`https://img.youtube.com/vi/${VIDEO_ID}/maxresdefault.jpg`}
+              src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
               alt="Line Up Revival Conference 26"
               className="w-full h-full object-cover"
             />
