@@ -1,4 +1,5 @@
 import HeroSection from '@/components/sections/HeroSection';
+import LineUpSection from '@/components/sections/LineUpSection';
 import { useTransition } from '@/context/TransitionContext';
 import InstitucionalSection from '@/components/sections/InstitucionalSection';
 import TimelineSection from '@/components/sections/TimelineSection';
@@ -26,8 +27,9 @@ const Index = ({ animateIn }: IndexProps) => {
       }}
     >
       <HeroSection animateIn={animateIn} />
-      <InstitucionalSection />
+      <LineUpSection />
       <PreSaleSection />
+      <InstitucionalSection />
       <TimelineSection />
       <ExperienceSection />
       <ProgramacaoSection />
