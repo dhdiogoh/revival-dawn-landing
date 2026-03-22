@@ -25,6 +25,8 @@ const LineUpSection = () => {
   }, []);
 
   useEffect(() => {
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) setPlaying(true);
