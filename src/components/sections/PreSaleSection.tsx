@@ -4,7 +4,7 @@ import { supabase } from '@/lib/supabase';
 
 const FALLBACK_TICKET_URL = 'https://www.tiketo.com.br/evento/4610';
 
-const RELEASE_DATE = new Date('2026-03-22T10:00:00-03:00').getTime();
+const RELEASE_DATE = new Date('2026-03-22T22:00:00-03:00').getTime();
 
 const PreSaleSection = () => {
   const [ticketUrl, setTicketUrl] = useState(FALLBACK_TICKET_URL);
