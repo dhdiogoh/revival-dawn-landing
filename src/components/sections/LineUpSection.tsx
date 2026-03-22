@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { supabase } from '@/lib/supabase';
 
 const FALLBACK_VIDEO_ID = 'VcetbzdZ5uY';
@@ -11,6 +11,7 @@ const extractVideoId = (url: string) => {
 const LineUpSection = () => {
   const [playing, setPlaying] = useState(false);
   const [videoId, setVideoId] = useState(FALLBACK_VIDEO_ID);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     supabase
@@ -23,8 +24,19 @@ const LineUpSection = () => {
       });
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setPlaying(true);
+      },
+      { threshold: 0.5 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="bg-rvl-creme-bg pt-10 pb-0 px-4">
+    <section ref={sectionRef} className="bg-rvl-creme-bg pt-10 pb-0 px-4">
       <div className="max-w-3xl mx-auto">
         {playing ? (
           <iframe

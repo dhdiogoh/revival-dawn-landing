@@ -8,6 +8,7 @@ const Admin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [videoUrl, setVideoUrl] = useState('');
+  const [ticketUrl, setTicketUrl] = useState('');
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
   const [authError, setAuthError] = useState('');
@@ -37,12 +38,13 @@ const Admin = () => {
 
   useEffect(() => {
     if (!isAdmin) return;
-    supabase
-      .from('settings')
-      .select('value')
-      .eq('key', 'lineup_video_url')
-      .single()
-      .then(({ data }) => { if (data?.value) setVideoUrl(data.value); });
+    supabase.from('settings').select('key, value').in('key', ['lineup_video_url', 'ticket_url'])
+      .then(({ data }) => {
+        data?.forEach(row => {
+          if (row.key === 'lineup_video_url') setVideoUrl(row.value);
+          if (row.key === 'ticket_url') setTicketUrl(row.value);
+        });
+      });
   }, [isAdmin]);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -58,12 +60,12 @@ const Admin = () => {
     e.preventDefault();
     setSaving(true);
     setMessage('');
-    const { error } = await supabase
-      .from('settings')
-      .update({ value: videoUrl })
-      .eq('key', 'lineup_video_url');
+    const [r1, r2] = await Promise.all([
+      supabase.from('settings').update({ value: videoUrl }).eq('key', 'lineup_video_url'),
+      supabase.from('settings').update({ value: ticketUrl }).eq('key', 'ticket_url'),
+    ]);
     setSaving(false);
-    setMessage(error ? 'Erro ao salvar.' : 'Salvo com sucesso!');
+    setMessage(r1.error || r2.error ? 'Erro ao salvar.' : 'Salvo com sucesso!');
   };
 
   if (!session || !isAdmin) {
@@ -110,6 +112,16 @@ const Admin = () => {
             placeholder="https://www.youtube.com/watch?v=..."
             value={videoUrl}
             onChange={e => setVideoUrl(e.target.value)}
+            className="border rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-orange-400"
+          />
+        </div>
+        <div className="flex flex-col gap-1">
+          <label className="font-semibold text-sm text-gray-600">Link do ingresso</label>
+          <input
+            type="text"
+            placeholder="https://www.tiketo.com.br/..."
+            value={ticketUrl}
+            onChange={e => setTicketUrl(e.target.value)}
             className="border rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-orange-400"
           />
         </div>
