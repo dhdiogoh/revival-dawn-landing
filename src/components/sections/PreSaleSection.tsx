@@ -4,8 +4,11 @@ import { supabase } from '@/lib/supabase';
 
 const FALLBACK_TICKET_URL = 'https://www.tiketo.com.br/evento/4610';
 
+const RELEASE_DATE = new Date('2026-03-22T10:00:00-03:00').getTime();
+
 const PreSaleSection = () => {
   const [ticketUrl, setTicketUrl] = useState(FALLBACK_TICKET_URL);
+  const [isReleased, setIsReleased] = useState(false);
 
   useEffect(() => {
     supabase
@@ -14,6 +17,20 @@ const PreSaleSection = () => {
       .eq('key', 'ticket_url')
       .single()
       .then(({ data }) => { if (data?.value) setTicketUrl(data.value); });
+
+    const checkTime = () => {
+      if (new Date().getTime() >= RELEASE_DATE) {
+        setIsReleased(true);
+      }
+    };
+
+    checkTime();
+
+    const interval = setInterval(() => {
+      checkTime();
+    }, 1000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -27,11 +44,16 @@ const PreSaleSection = () => {
               Garanta seu lugar | RVL 26
             </p>
             <h2 className="font-bebas text-5xl md:text-6xl text-rvl-escuro tracking-wide mb-4 leading-tight">
-              PRIMEIRO LOTE
+              {isReleased ? "PRIMEIRO LOTE LIBERADO" : "PRIMEIRO LOTE CHEGANDO!"}
             </h2>
-            <p className="font-inter text-rvl-escuro/80 leading-relaxed text-base">
-              Dias 08 e 09 de maio de 2026, no Hangar em Belém/PA. Venha viver dois dias de busca, presença de Deus e avivamento, um encontro que nasce do propósito de servir a cidade e posicionar o Norte do Brasil no que Deus está fazendo nesta geração. Garanta seu lugar agora no primeiro lote.
-            </p>
+            <div className="font-inter space-y-4">
+              <p className="text-rvl-escuro/80 leading-relaxed text-base">
+                Dias 08 e 09 de maio de 2026, no Hangar em Belém/PA. Venha viver dois dias de busca, presença de Deus e avivamento, um encontro que nasce do propósito de servir a cidade e posicionar o Norte do Brasil no que Deus está fazendo nesta geração. Garanta seu lugar agora no primeiro lote.
+              </p>
+              <p className="font-bold text-lg text-rvl-laranja bg-rvl-laranja/10 inline-block px-4 py-2 rounded-lg border border-rvl-laranja/20">
+                {isReleased ? "Garanta seu ingresso antes que o primeiro lote se encerre." : "Hoje (22) às 22h desbloqueie seu acesso!"}
+              </p>
+            </div>
           </div>
 
           {/* Right column — Ticket card */}
@@ -42,7 +64,7 @@ const PreSaleSection = () => {
               {/* Top stub */}
               <div className="px-8 pt-8 pb-6 text-center">
                 <div className="inline-block bg-rvl-laranja/20 border border-rvl-laranja/40 text-rvl-laranja text-xs font-inter font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
-                  Primeiro Lote Aberto
+                  Primeiro Lote
                 </div>
 
                 <h3 className="font-bebas text-3xl md:text-4xl text-rvl-creme tracking-wide leading-tight mb-5">
@@ -81,15 +103,24 @@ const PreSaleSection = () => {
                   Garanta seu ingresso antes que o lote encerre.
                 </p>
 
-                <a
-                  href={ticketUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full bg-rvl-laranja text-white rounded-xl py-4 px-6 font-inter font-bold text-sm uppercase tracking-wide hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_4px_24px_rgba(245,130,58,0.35)] flex items-center justify-center gap-2"
-                >
-                  GARANTIR MEU INGRESSO
-                  <ArrowRight className="w-4 h-4" />
-                </a>
+                {isReleased ? (
+                  <a
+                    href={ticketUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-rvl-laranja text-white rounded-xl py-4 px-6 font-inter font-bold text-sm uppercase tracking-wide hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_4px_24px_rgba(245,130,58,0.35)] flex items-center justify-center gap-2"
+                  >
+                    PRIMEIRO LOTE ABERTO — GARANTA SEU LUGAR ↓
+                  </a>
+                ) : (
+                  <button
+                    disabled
+                    className="w-full bg-white/10 text-white/40 rounded-xl py-4 px-6 font-inter font-bold text-sm uppercase tracking-wide cursor-not-allowed flex items-center justify-center gap-2 shadow-none"
+                  >
+                    GARANTIR MEU INGRESSO
+                    <ArrowRight className="w-4 h-4 opacity-50" />
+                  </button>
+                )}
               </div>
 
             </div>

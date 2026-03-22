@@ -42,9 +42,9 @@ const Navbar = () => {
             <div className="max-w-7xl mx-auto flex items-center justify-between">
                 <Link to="/" className="flex items-center gap-2" onClick={() => window.scrollTo(0, 0)}>
                     <img
-                        src="/images/rvl-26-logo-adjust.png"
+                        src="/images/RVL 26 (250 x 250 px).png"
                         alt="Revival Logo"
-                        className="h-8 md:h-10 w-auto mix-blend-screen"
+                        className="h-16 md:h-24 w-auto mix-blend-screen"
                     />
                 </Link>
 
@@ -55,7 +55,7 @@ const Navbar = () => {
                             key={link.name}
                             to={link.href}
                             className={cn(
-                                "font-inter text-xs font-bold tracking-widest transition-colors hover:text-rvl-laranja",
+                                "font-inter text-sm md:text-base font-bold tracking-widest transition-colors hover:text-rvl-laranja",
                                 location.pathname === link.href ? "text-rvl-laranja" : "text-rvl-creme"
                             )}
                         >
