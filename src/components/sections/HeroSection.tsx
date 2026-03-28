@@ -88,13 +88,13 @@ const HeroSection = ({ animateIn }: HeroSectionProps) => {
 
       {/* Container que centraliza o conteúdo no espaço acima do banner */}
       <div
-        className="relative z-[2] flex flex-col items-center justify-center w-full max-w-5xl mx-auto"
+        className="hero-content relative z-[2] flex flex-col items-center justify-center w-full max-w-5xl mx-auto"
         style={{ height: 'calc(100dvh - var(--banner-h))' }}
       >
         <img
           src="/images/logo-um-novo-amanhecer.png"
           alt="Revival Conference 26 Logo"
-          className="w-[300px] sm:w-[306px] md:w-[408px] lg:w-[490px] max-w-[90vw] relative z-0 mb-4 md:mb-6"
+          className="w-[300px] sm:w-[306px] md:w-[380px] lg:w-[420px] xl:w-[490px] max-w-[90vw] max-h-[42vh] object-contain relative z-0 mb-3 md:mb-4 xl:mb-6"
           style={{
             mixBlendMode: 'screen',
             filter: 'drop-shadow(0 0 18px rgba(251,244,228,0.35)) drop-shadow(0 0 60px rgba(245,130,58,0.15))',
@@ -104,7 +104,7 @@ const HeroSection = ({ animateIn }: HeroSectionProps) => {
 
 
 
-        <div className="flex flex-col items-center gap-5 md:gap-7 relative z-10 w-full px-4 sm:px-6">
+        <div className="flex flex-col items-center gap-4 md:gap-5 lg:gap-5 xl:gap-7 relative z-10 w-full px-4 sm:px-6">
           {/* Date pill */}
           <div
             className="border border-rvl-creme/50 rounded-full px-3 py-1 sm:px-4 sm:py-1.5 text-rvl-creme text-[11px] sm:text-sm md:text-base font-inter bg-rvl-escuro/20 backdrop-blur-sm whitespace-nowrap"
