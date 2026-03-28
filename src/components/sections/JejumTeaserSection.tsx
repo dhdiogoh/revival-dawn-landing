@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const JejumTeaserSection = () => (
   <section className="bg-rvl-escuro py-14 px-6">
     <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-      <div>
+      <div className="text-center md:text-left">
         <p className="text-rvl-laranja font-inter font-medium uppercase tracking-widest text-xs mb-2">
           Pré-Conferência
         </p>
