@@ -30,7 +30,7 @@ const RvlLancamentoSection = () => {
             aria-label="Reproduzir vídeo lançamento t-shirt RVL"
           >
             <img
-              src="/images/rvl-tshirt.jpeg"
+              src="https://ldttnxxnplkwyimpcgmf.supabase.co/storage/v1/object/public/images/rvl-tshirt.jpeg"
               alt="Lançamento da t-shirt da RVL"
               className="w-full h-full object-cover"
             />
