@@ -88,7 +88,7 @@ const HeroSection = ({ animateIn }: HeroSectionProps) => {
 
       {/* Container que centraliza o conteúdo no espaço acima do banner */}
       <div
-        className="hero-content relative z-[2] flex flex-col items-center justify-center w-full max-w-5xl mx-auto"
+        className="hero-content relative z-[2] flex flex-col items-center justify-center w-full max-w-5xl mx-auto pt-16 md:pt-20"
         style={{ height: 'calc(100dvh - var(--banner-h))' }}
       >
         <img
