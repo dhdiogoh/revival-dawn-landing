@@ -177,7 +177,9 @@ const DevocionalClock = () => {
               </h2>
               <p className="font-inter text-rvl-creme/40 text-xs mt-1">
                 Passo {currentStepIndex + 1} de {STEPS.length}
-                {' · '}sugestão: {Math.round(step.suggestedSec / 60)} min
+              </p>
+              <p className="font-inter text-rvl-laranja/80 text-xs font-semibold uppercase tracking-widest mt-0.5">
+                mínimo: {Math.round(step.suggestedSec / 60)} min
               </p>
             </>
           )}
@@ -215,7 +217,7 @@ const DevocionalClock = () => {
               </span>
               {reachedSuggestion && (
                 <span className="font-inter text-rvl-amarelo text-[10px] uppercase tracking-widest animate-pulse">
-                  sugestão atingida
+                  mínimo atingido ✓
                 </span>
               )}
             </div>
@@ -270,16 +272,17 @@ const DevocionalClock = () => {
                 PAUSAR
               </button>
               <button
-                onClick={handleFinalize}
+                onClick={reachedSuggestion ? handleFinalize : undefined}
+                disabled={!reachedSuggestion}
                 className={cn(
                   'flex-1 flex items-center justify-center gap-2 rounded-full py-4 font-inter font-bold text-sm uppercase tracking-wide transition-all',
                   reachedSuggestion
                     ? 'bg-rvl-laranja text-white hover:opacity-90 shadow-[0_0_24px_rgba(232,98,42,0.35)]'
-                    : 'border border-rvl-creme/20 text-rvl-creme/50 hover:border-rvl-creme/40 hover:text-rvl-creme/80'
+                    : 'border border-rvl-creme/10 text-rvl-creme/20 cursor-not-allowed'
                 )}
               >
                 <CheckCheck className="w-4 h-4" />
-                FINALIZAR
+                PRÓXIMO
               </button>
             </div>
           )}
@@ -295,11 +298,17 @@ const DevocionalClock = () => {
                 RETOMAR
               </button>
               <button
-                onClick={handleFinalize}
-                className="flex-1 flex items-center justify-center gap-2 border border-rvl-creme/20 text-rvl-creme/50 rounded-full py-4 font-inter font-bold text-sm uppercase tracking-wide hover:border-rvl-creme/40 hover:text-rvl-creme/80 transition-all"
+                onClick={reachedSuggestion ? handleFinalize : undefined}
+                disabled={!reachedSuggestion}
+                className={cn(
+                  'flex-1 flex items-center justify-center gap-2 rounded-full py-4 font-inter font-bold text-sm uppercase tracking-wide transition-all',
+                  reachedSuggestion
+                    ? 'border border-rvl-creme/40 text-rvl-creme/80 hover:border-rvl-creme/60 hover:text-rvl-creme'
+                    : 'border border-rvl-creme/10 text-rvl-creme/20 cursor-not-allowed'
+                )}
               >
                 <CheckCheck className="w-4 h-4" />
-                FINALIZAR
+                PRÓXIMO
               </button>
             </div>
           )}
