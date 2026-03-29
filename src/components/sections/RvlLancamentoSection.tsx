@@ -1,20 +1,102 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { MapPin, Calendar } from 'lucide-react';
+import { supabase } from '@/lib/supabase';
+
+const FALLBACK_TICKET_URL = 'https://www.tiketo.com.br/evento/4610';
 
 const VIDEO_URL =
   'https://pikaso.cdnpk.net/private/production/3759737880/f321115c-1fd6-4592-9b44-b2d147e6fe3b-0.mp4?token=exp=1775001600~hmac=db14e7bd52d1bf1170c8e5d953d874573b06b0983d7a484610e99b9c728bc07e';
 
 const RvlLancamentoSection = () => {
   const [playing, setPlaying] = useState(false);
+  const [ticketUrl, setTicketUrl] = useState(FALLBACK_TICKET_URL);
+
+  useEffect(() => {
+    supabase
+      .from('settings')
+      .select('value')
+      .eq('key', 'ticket_url')
+      .single()
+      .then(({ data }) => { if (data?.value) setTicketUrl(data.value); });
+  }, []);
 
   return (
     <section className="bg-rvl-creme-bg py-20 md:py-28 px-6">
       <div className="max-w-5xl mx-auto">
-        <p className="text-rvl-laranja font-medium mb-1 uppercase tracking-wider text-sm text-center">
-          RVL | LANÇAMENTO DA SEMANA
-        </p>
-        <h2 className="font-bebas text-rvl-escuro tracking-wide mb-6 leading-none text-center whitespace-nowrap" style={{ fontSize: 'clamp(1.4rem, 5.5vw, 3rem)' }}>
-          Lançamento da t-shirt da RVL
-        </h2>
+
+        {/* COMBO RVL — destaque */}
+        <div className="mb-12">
+          <p className="text-rvl-laranja font-medium mb-1 uppercase tracking-wider text-sm text-center font-inter">
+            RVL | LANÇAMENTO DA SEMANA
+          </p>
+          <h2 className="font-bebas text-rvl-escuro tracking-wide mb-8 leading-none text-center whitespace-nowrap" style={{ fontSize: 'clamp(1.4rem, 5.5vw, 3rem)' }}>
+            Lançamento da t-shirt da RVL
+          </h2>
+
+          {/* Ticket COMBO destacado */}
+          <div className="relative bg-rvl-escuro rounded-2xl shadow-2xl ring-2 ring-rvl-laranja/60 max-w-lg mx-auto overflow-visible">
+
+            {/* Top stub */}
+            <div className="px-8 pt-7 pb-5 text-center">
+              <div className="inline-block bg-rvl-laranja/20 border border-rvl-laranja/40 text-rvl-laranja text-[10px] font-inter font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-3">
+                PRIMEIRO LOTE
+              </div>
+              <h3 className="font-bebas text-3xl text-rvl-creme tracking-wide leading-tight mb-2">
+                COMBO RVL
+              </h3>
+              <ul className="font-inter text-rvl-creme/60 text-xs flex items-center justify-center gap-4 mb-4">
+                <li className="flex items-center gap-1.5">
+                  <span className="w-1 h-1 rounded-full bg-rvl-laranja/60 inline-block" />
+                  Ingresso RVL
+                </li>
+                <li className="flex items-center gap-1.5">
+                  <span className="w-1 h-1 rounded-full bg-rvl-laranja/60 inline-block" />
+                  T-shirt exclusiva
+                </li>
+              </ul>
+              <div className="flex items-center justify-center gap-5 text-rvl-creme/30 text-xs font-inter">
+                <span className="flex items-center gap-1.5">
+                  <Calendar className="w-3.5 h-3.5" />
+                  08 e 09 de Maio, 2026
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5" />
+                  Hangar, Belém/PA
+                </span>
+              </div>
+            </div>
+
+            {/* Tear line */}
+            <div className="relative flex items-center px-0">
+              <div className="absolute -left-3.5 w-7 h-7 rounded-full bg-rvl-creme-bg z-20" />
+              <div className="w-full border-t-2 border-dashed border-white/15 mx-6" />
+              <div className="absolute -right-3.5 w-7 h-7 rounded-full bg-rvl-creme-bg z-20" />
+            </div>
+
+            {/* Bottom stub */}
+            <div className="px-8 py-6 text-center">
+              <p className="font-bebas text-4xl text-rvl-creme tracking-wide mb-1">R$229</p>
+              <p className="font-inter text-rvl-creme/40 text-xs mb-5">ingresso + t-shirt</p>
+              <a
+                href={ticketUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-rvl-laranja text-white rounded-xl py-4 px-6 font-inter font-bold text-sm uppercase tracking-wide hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_4px_24px_rgba(245,130,58,0.35)] flex items-center justify-center"
+              >
+                GARANTA SEU LUGAR
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Separador */}
+        <div className="flex items-center gap-4 mb-8">
+          <div className="flex-1 h-px bg-rvl-escuro/10" />
+          <span className="font-inter text-rvl-escuro/30 text-xs uppercase tracking-widest">incluído no combo</span>
+          <div className="flex-1 h-px bg-rvl-escuro/10" />
+        </div>
+
+        {/* Vídeo da t-shirt */}
         {playing ? (
           <video
             className="w-full aspect-video rounded-lg bg-black object-cover"
@@ -43,6 +125,7 @@ const RvlLancamentoSection = () => {
             </div>
           </button>
         )}
+
       </div>
     </section>
   );

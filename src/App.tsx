@@ -7,6 +7,8 @@ import Index from "./pages/Index";
 import { GamePage } from "./pages/GamePage";
 import RevivalCulture from "./pages/RevivalCulture";
 import Admin from "./pages/Admin";
+import JejumPage from "./pages/JejumPage";
+import JejumTimerPage from "./pages/JejumTimerPage";
 import Navbar from "./components/Navbar";
 import { TransitionProvider } from "./context/TransitionContext";
 
@@ -25,6 +27,8 @@ const App = () => (
             <Route path="/game" element={<GamePage />} />
             <Route path="/revival-culture" element={<RevivalCulture />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/jejum" element={<JejumPage />} />
+            <Route path="/jejum/timer" element={<JejumTimerPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </BrowserRouter>
