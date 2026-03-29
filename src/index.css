@@ -96,6 +96,13 @@
   }
 }
 
+/* Hero section — laptop scale (content only, marquee excluded) */
+@media (min-width: 1024px) and (max-width: 1599px) {
+  .hero-content {
+    zoom: 0.92;
+  }
+}
+
 /* Animated gradient backgrounds */
 .hero-gradient {
   background: linear-gradient(135deg,

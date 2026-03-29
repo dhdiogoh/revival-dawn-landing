@@ -9,6 +9,8 @@ import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import NewDawnSection from '@/components/sections/NewDawnSection';
 import QuandoOndeSection from '@/components/sections/QuandoOndeSection';
 import PreSaleSection from '@/components/sections/PreSaleSection';
+import RvlLancamentoSection from '@/components/sections/RvlLancamentoSection';
+import JejumTeaserSection from '@/components/sections/JejumTeaserSection';
 import FooterSection from '@/components/sections/FooterSection';
 
 interface IndexProps {
@@ -28,7 +30,9 @@ const Index = ({ animateIn }: IndexProps) => {
     >
       <HeroSection animateIn={animateIn} />
       <LineUpSection />
+      <RvlLancamentoSection />
       <PreSaleSection />
+      <JejumTeaserSection />
       <InstitucionalSection />
       <TimelineSection />
       <ExperienceSection />
