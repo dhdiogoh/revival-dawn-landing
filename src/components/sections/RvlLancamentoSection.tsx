@@ -4,8 +4,7 @@ import { supabase } from '@/lib/supabase';
 
 const FALLBACK_TICKET_URL = 'https://www.tiketo.com.br/evento/4610';
 
-const VIDEO_URL =
-  'https://pikaso.cdnpk.net/private/production/3759737880/f321115c-1fd6-4592-9b44-b2d147e6fe3b-0.mp4?token=exp=1775001600~hmac=db14e7bd52d1bf1170c8e5d953d874573b06b0983d7a484610e99b9c728bc07e';
+const SHIRT_VIDEO_ID = 'RdR8BC6uB6o';
 
 const RvlLancamentoSection = () => {
   const [playing, setPlaying] = useState(false);
@@ -92,18 +91,18 @@ const RvlLancamentoSection = () => {
         {/* Separador */}
         <div className="flex items-center gap-4 mb-8">
           <div className="flex-1 h-px bg-rvl-escuro/10" />
-          <span className="font-inter text-rvl-escuro/30 text-xs uppercase tracking-widest">incluído no combo</span>
+          <span className="font-inter text-rvl-escuro/30 text-xs uppercase tracking-widest">incluída no combo · escolha a sua</span>
           <div className="flex-1 h-px bg-rvl-escuro/10" />
         </div>
 
-        {/* Vídeo da t-shirt */}
+        {/* Vídeo da t-shirt — YouTube */}
         {playing ? (
-          <video
-            className="w-full aspect-video rounded-lg bg-black object-cover"
-            src={VIDEO_URL}
-            controls
-            autoPlay
-            playsInline
+          <iframe
+            className="w-full aspect-video rounded-lg"
+            src={`https://www.youtube.com/embed/${SHIRT_VIDEO_ID}?autoplay=1`}
+            title="Lançamento da t-shirt da RVL"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
           />
         ) : (
           <button

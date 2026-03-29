@@ -172,7 +172,7 @@ const JejumInfoSections = () => {
       </section>
 
       {/* ── Bloco 4: Fluxo devocional + CTA ─────────────────── */}
-      <section className="bg-rvl-escuro px-6 pt-20 md:pt-28 pb-0">
+      <section id="fluxo-devocional" className="bg-rvl-escuro px-6 pt-20 md:pt-28 pb-0">
         {/* Topo escuro — título e descrição */}
         <div className="max-w-3xl mx-auto pb-14">
           <p className="font-inter text-rvl-laranja uppercase tracking-[0.3em] text-xs mb-4">
