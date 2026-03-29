@@ -151,15 +151,6 @@ const PreSaleSection = () => {
     {
       badge: 'PRIMEIRO LOTE',
       badgeActive: true,
-      title: 'COMBO RVL',
-      items: ['Ingresso RVL', 'T-shirt'],
-      price: 'R$229',
-      ctaLabel: 'GARANTA SEU LUGAR',
-      href: ticketUrl,
-    },
-    {
-      badge: 'PRIMEIRO LOTE',
-      badgeActive: true,
       title: 'TRIPLE PASS',
       subtitle: '3 amigos',
       items: ['Lote para 3 pessoas com preço promocional'],
@@ -244,17 +235,10 @@ const PreSaleSection = () => {
           </div>
         </div>
 
-        {/* Desktop — grid */}
-        <div className="hidden md:grid md:grid-cols-3 gap-5 items-stretch mb-5">
-          {tickets.slice(0, 3).map((ticket) => (
+        {/* Desktop — grid 2x2 */}
+        <div className="hidden md:grid md:grid-cols-2 gap-5 items-stretch">
+          {tickets.map((ticket) => (
             <TicketCard key={ticket.title} {...ticket} />
-          ))}
-        </div>
-        <div className="hidden md:flex justify-center gap-5">
-          {tickets.slice(3).map((ticket) => (
-            <div key={ticket.title} className="w-[calc(33.333%-10px)]">
-              <TicketCard {...ticket} />
-            </div>
           ))}
         </div>
 
