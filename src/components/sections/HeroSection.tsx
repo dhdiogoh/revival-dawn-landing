@@ -139,7 +139,7 @@ const HeroSection = ({ animateIn }: HeroSectionProps) => {
             className="bg-rvl-creme text-rvl-escuro rounded-full px-6 py-3 sm:px-10 sm:py-4 font-inter font-bold text-xs sm:text-sm md:text-lg uppercase tracking-wide hover:opacity-90 hover:scale-105 shadow-[0_0_30px_rgba(251,244,228,0.3)] mt-2 whitespace-nowrap"
             style={getElementStyle(ctaDelay)}
           >
-            {isReleased ? 'PRIMEIRO LOTE ABERTO — GARANTA SEU LUGAR ↓' : 'PRIMEIRO LOTE CHEGANDO ↓'}
+            {isReleased ? 'Escolha seu ingresso aqui' : 'PRIMEIRO LOTE CHEGANDO ↓'}
           </a>
         </div>
       </div>
