@@ -396,6 +396,16 @@
     }
   }
 
+  @keyframes marquee-slow {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-33.333%);
+    }
+  }
+
   @keyframes gradientShift {
     0% {
       background-position: 0% 50%;
