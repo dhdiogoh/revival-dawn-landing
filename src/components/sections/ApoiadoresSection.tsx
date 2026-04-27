@@ -1,23 +1,49 @@
-const partners = [
-  { src: '/images/partners/logo-sushi-ruy-barbosa.png', alt: 'Sushi Ruy Barbosa', href: 'https://www.instagram.com/sushiruybarbosa/', mobileClass: 'h-20 max-w-[130px]', desktopClass: 'h-20 max-w-[160px]' },
-  { src: '/images/partners/logo-blum.PNG', alt: 'Blum', href: 'https://www.instagram.com/blum.cookies/', mobileClass: 'h-20 max-w-[130px]', desktopClass: 'h-20 max-w-[160px]' },
-  { src: '/images/partners/logo-rusty-burger.PNG', alt: 'Rusty Burger', href: 'https://www.instagram.com/rustyburgeroficial/', mobileClass: 'h-20 max-w-[130px]', desktopClass: 'h-20 max-w-[160px]' },
-  { src: '/images/partners/logo-zenith.png', alt: 'Zenith', href: 'https://www.instagram.com/zenith_belem/', mobileClass: 'h-16 max-w-[110px]', desktopClass: 'h-16 max-w-[140px]' },
-  { src: '/images/partners/bermax-logo.png', alt: 'Bermax', href: 'https://www.instagram.com/bermaxculture/', mobileClass: 'h-14 max-w-[90px]', desktopClass: 'h-14 max-w-[120px]' },
-  { src: '/images/partners/track-and-field-logo.png', alt: 'Track & Field', href: 'https://www.instagram.com/trackfieldbelem/', mobileClass: 'h-16 max-w-[110px]', desktopClass: 'h-16 max-w-[140px]' },
+const bigPartners = [
+  { src: '/images/partners/Pleno 2.png', alt: 'Pleno Saúde Integral', href: 'https://plenosaudeintegral.com.br/', mobileClass: 'h-24 max-w-[160px]', desktopClass: 'h-28 max-w-[200px]' },
+  { src: '/images/partners/logo-sushi-ruy-barbosa.png', alt: 'SRB', href: 'https://www.instagram.com/sushiruybarbosa/', mobileClass: 'h-24 max-w-[160px]', desktopClass: 'h-28 max-w-[200px]' },
+];
+
+const smallPartners = [
+  { src: '/images/partners/logo-zenith.png', alt: 'Zenith', href: 'https://www.instagram.com/zenith_belem/', mobileClass: 'h-14 max-w-[100px]', desktopClass: 'h-16 max-w-[130px]' },
+  { src: '/images/partners/logo-blum.PNG', alt: 'Blum', href: 'https://www.instagram.com/blum.cookies/', mobileClass: 'h-14 max-w-[100px]', desktopClass: 'h-16 max-w-[130px]' },
+  { src: '/images/partners/logo-rusty-burger.PNG', alt: 'Rusty Burger', href: 'https://www.instagram.com/rustyburgeroficial/', mobileClass: 'h-14 max-w-[100px]', desktopClass: 'h-16 max-w-[130px]' },
+  { src: '/images/partners/track-and-field-logo.png', alt: 'Track & Field', href: 'https://www.instagram.com/trackfieldbelem/', mobileClass: 'h-14 max-w-[100px]', desktopClass: 'h-16 max-w-[130px]' },
+  { src: '/images/partners/bermax-logo.png', alt: 'Bermax', href: 'https://www.instagram.com/bermaxculture/', mobileClass: 'h-12 max-w-[80px]', desktopClass: 'h-14 max-w-[110px]' },
 ];
 
 const ApoiadoresSection = () => {
   return (
     <section className="bg-rvl-escuro py-16 px-6 border-t border-white/10">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="font-playfair text-2xl md:text-3xl text-rvl-creme mb-10 tracking-widest uppercase">
-          Apoiadores
+        <h2 className="font-playfair text-2xl md:text-3xl text-rvl-creme mb-12 tracking-widest uppercase">
+          Empresas Parceiras
         </h2>
 
-        {/* Mobile: 3 por linha */}
-        <div className="grid grid-cols-3 gap-y-10 md:hidden">
-          {partners.map((partner) => (
+        {/* Cotas maiores */}
+        <div className="flex flex-wrap justify-center items-center gap-10 mb-12">
+          {bigPartners.map((partner) => (
+            <a
+              key={partner.alt}
+              href={partner.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center"
+            >
+              <img
+                src={partner.src}
+                alt={partner.alt}
+                className={`w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 mix-blend-screen ${partner.mobileClass} md:${partner.desktopClass}`}
+              />
+            </a>
+          ))}
+        </div>
+
+        {/* Divisor */}
+        <div className="border-t border-white/10 mb-12" />
+
+        {/* Cotas menores — Mobile */}
+        <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-10 md:hidden">
+          {smallPartners.map((partner) => (
             <a
               key={partner.alt}
               href={partner.href}
@@ -34,9 +60,9 @@ const ApoiadoresSection = () => {
           ))}
         </div>
 
-        {/* Desktop: linha estática */}
+        {/* Cotas menores — Desktop: linha */}
         <div className="hidden md:flex flex-nowrap justify-center items-center gap-10">
-          {partners.map((partner) => (
+          {smallPartners.map((partner) => (
             <a
               key={partner.alt}
               href={partner.href}
