@@ -1,6 +1,7 @@
 const bigPartners = [
   { src: '/images/partners/Pleno 2.png', alt: 'Pleno Saúde Integral', href: 'https://plenosaudeintegral.com.br/', mobileClass: 'h-24 max-w-[160px]', desktopClass: 'h-28 max-w-[200px]' },
   { src: '/images/partners/logo-sushi-ruy-barbosa.png', alt: 'SRB', href: 'https://www.instagram.com/sushiruybarbosa/', mobileClass: 'h-24 max-w-[160px]', desktopClass: 'h-28 max-w-[200px]' },
+  { src: '/images/partners/BENEVI_Marca_azul.png', alt: 'Benevi', href: '#', mobileClass: 'h-14 max-w-[100px]', desktopClass: 'h-16 max-w-[130px]' },
 ];
 
 const smallPartners = [
@@ -19,20 +20,39 @@ const ApoiadoresSection = () => {
           Empresas Parceiras
         </h2>
 
-        {/* Cotas maiores */}
-        <div className="flex flex-wrap justify-center items-center gap-10 mb-12">
+        {/* Cotas maiores — Mobile: 2 por linha, último centralizado */}
+        <div className="grid grid-cols-2 gap-x-4 gap-y-10 mb-12 md:hidden">
+          {bigPartners.map((partner, i) => (
+            <a
+              key={partner.alt}
+              href={partner.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center justify-center ${i === bigPartners.length - 1 && bigPartners.length % 2 !== 0 ? 'col-span-2' : ''}`}
+            >
+              <img
+                src={partner.src}
+                alt={partner.alt}
+                className={`w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 mix-blend-screen ${partner.mobileClass}`}
+              />
+            </a>
+          ))}
+        </div>
+
+        {/* Cotas maiores — Desktop */}
+        <div className="hidden md:flex flex-nowrap justify-center items-center gap-10 mb-12">
           {bigPartners.map((partner) => (
             <a
               key={partner.alt}
               href={partner.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center"
+              className="shrink-0 flex items-center justify-center"
             >
               <img
                 src={partner.src}
                 alt={partner.alt}
-                className={`w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 mix-blend-screen ${partner.mobileClass} md:${partner.desktopClass}`}
+                className={`w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 mix-blend-screen ${partner.desktopClass}`}
               />
             </a>
           ))}
