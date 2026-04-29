@@ -163,7 +163,7 @@ const PreSaleSection = () => {
       badge: 'PRIMEIRO LOTE',
       badgeActive: true,
       title: 'KIT RVL',
-      items: ['Fast Pass', 'Sala Profética', 'Stickers', 'Garrafa', 'T-shirt'],
+      items: ['Fast Pass', 'Stickers', 'Garrafa', 'T-shirt'],
       price: 'R$319',
       ctaLabel: 'GARANTA SEU LUGAR',
       href: ticketUrl,

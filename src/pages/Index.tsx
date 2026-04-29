@@ -14,6 +14,7 @@ import JejumTeaserSection from '@/components/sections/JejumTeaserSection';
 import ApoiadoresSection from '@/components/sections/ApoiadoresSection';
 import FAQSection from '@/components/sections/FAQSection';
 import FooterSection from '@/components/sections/FooterSection';
+import FloatingCTA from '@/components/FloatingCTA';
 
 interface IndexProps {
   animateIn?: boolean;
@@ -45,6 +46,7 @@ const Index = ({ animateIn }: IndexProps) => {
       <ApoiadoresSection />
       <FAQSection />
       <FooterSection />
+      <FloatingCTA />
     </main>
   );
 };
