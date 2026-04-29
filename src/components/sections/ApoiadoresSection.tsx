@@ -1,5 +1,5 @@
 const bigPartners = [
-  { src: '/images/partners/Pleno att.png', alt: 'Pleno Saúde Integral', href: 'https://plenosaudeintegral.com.br/', mobileClass: 'h-24 max-w-[160px]', desktopClass: 'h-28 max-w-[200px]' },
+  { src: '/images/partners/Pleno att.png', alt: 'Pleno Saúde Integral', href: 'https://www.instagram.com/plenosaudeintegral/', mobileClass: 'h-24 max-w-[160px]', desktopClass: 'h-28 max-w-[200px]' },
   { src: '/images/partners/logo-sushi-ruy-barbosa.png', alt: 'SRB', href: 'https://www.instagram.com/sushiruybarbosa/', mobileClass: 'h-24 max-w-[160px]', desktopClass: 'h-28 max-w-[200px]' },
   { src: '/images/partners/BENEVI_Marca_azul.png', alt: 'Benevi', href: '#', mobileClass: 'h-14 max-w-[100px]', desktopClass: 'h-16 max-w-[130px]' },
 ];
@@ -7,13 +7,15 @@ const bigPartners = [
 const smallPartners = [
   { src: '/images/partners/logo-zenith.png', alt: 'Zenith', href: 'https://www.instagram.com/zenith_belem/', mobileClass: 'h-14 max-w-[100px]', desktopClass: 'h-16 max-w-[130px]' },
   { src: '/images/partners/logo-blum.PNG', alt: 'Blum', href: 'https://www.instagram.com/blum.cookies/', mobileClass: 'h-14 max-w-[100px]', desktopClass: 'h-16 max-w-[130px]' },
-  { src: '/images/partners/logo-rusty-burger.PNG', alt: 'Rusty Burger', href: 'https://www.instagram.com/rustyburgeroficial/', mobileClass: 'h-14 max-w-[100px]', desktopClass: 'h-16 max-w-[130px]' },
+  { src: '/images/partners/rusty-burger-logo-nova.png', alt: 'Rusty Burger', href: 'https://www.instagram.com/rustyburgeroficial/', mobileClass: 'h-9 max-w-[70px]', desktopClass: 'h-10 max-w-[85px]' },
   { src: '/images/partners/track-and-field-logo.png', alt: 'Track & Field', href: 'https://www.instagram.com/trackfieldbelem/', mobileClass: 'h-14 max-w-[100px]', desktopClass: 'h-16 max-w-[130px]' },
 ];
 
 const apoioPartners = [
   { src: '/images/partners/bermax-logo.png', alt: 'Bermax', href: 'https://www.instagram.com/bermaxculture/', mobileClass: 'h-12 max-w-[80px]', desktopClass: 'h-14 max-w-[110px]' },
   { src: '/images/partners/Logo_unineuro_diagnosticos.jpg-removebg-preview.png', alt: 'Unineuro', href: 'https://unineurodiagnosticos.com.br/', mobileClass: 'h-12 max-w-[80px]', desktopClass: 'h-14 max-w-[110px]' },
+  { src: '/images/partners/reboucas-tecidos-logo.png', alt: 'Rebouças Tecidos', href: 'https://www.instagram.com/reboucastecidos/', mobileClass: 'h-12 max-w-[80px]', desktopClass: 'h-14 max-w-[110px]' },
+  { src: '/images/partners/amazonia-na-cuia-logo.PNG', alt: 'Amazônia na Cuia', href: 'https://www.instagram.com/amazonianacuia/', mobileClass: 'h-12 max-w-[80px]', desktopClass: 'h-14 max-w-[110px]' },
 ];
 
 const ApoiadoresSection = () => {
