@@ -129,17 +129,17 @@ const PreSaleSection = () => {
 
   const tickets: TicketCardProps[] = [
     {
-      badge: 'PRIMEIRO LOTE',
+      badge: 'TERCEIRO LOTE',
       badgeActive: true,
       title: 'RVL PASS',
       items: ['Apenas ingresso'],
-      price: 'R$129',
+      price: 'R$169',
       highlighted: true,
       ctaLabel: 'GARANTA SEU LUGAR',
       href: ticketUrl,
     },
     {
-      badge: 'PRIMEIRO LOTE',
+      badge: 'TERCEIRO LOTE',
       badgeActive: true,
       title: 'GEN Z PASS',
       subtitle: 'Para jovens de 15 a 25 anos',
@@ -149,7 +149,7 @@ const PreSaleSection = () => {
       href: ticketUrl,
     },
     {
-      badge: 'PRIMEIRO LOTE',
+      badge: 'TERCEIRO LOTE',
       badgeActive: true,
       title: 'TRIPLE PASS',
       subtitle: '3 amigos',
@@ -160,11 +160,11 @@ const PreSaleSection = () => {
       href: ticketUrl,
     },
     {
-      badge: 'PRIMEIRO LOTE',
+      badge: 'TERCEIRO LOTE',
       badgeActive: true,
       title: 'KIT RVL',
       items: ['Fast Pass', 'Stickers', 'Garrafa', 'T-shirt'],
-      price: 'R$319',
+      price: 'R$319,90',
       ctaLabel: 'GARANTA SEU LUGAR',
       href: ticketUrl,
     },
