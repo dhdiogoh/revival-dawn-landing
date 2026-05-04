@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revival Conference — Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       BASE RESET
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #1A1A1A;
+      color: #EDE3D0;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       ANIMATIONS
+    ============================================================ */
+    @keyframes gradientShift {
+      0%   { background-position: 0% 0%; }
+      33%  { background-position: 100% 0%; }
+      66%  { background-position: 100% 100%; }
+      100% { background-position: 0% 0%; }
+    }
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(1.4); }
+    }
+
+    /* ============================================================
+       PAGE HEADER
+    ============================================================ */
+    .ds-header {
+      background: linear-gradient(135deg,
+        #F5823A 0%, #F5C842 15%, #F5823A 40%,
+        #E8352A 60%, #F5823A 80%, #F5C842 95%, #5BB8D4 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
+      padding: 56px 48px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .ds-header::after {
+      content: '';
+      position: absolute; inset: 0;
+      opacity: 0.14;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 128px; pointer-events: none;
+    }
+    .ds-header-inner { position: relative; z-index: 1; }
+    .ds-header h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 68px; letter-spacing: 0.06em;
+      color: #1A1A1A; line-height: 1;
+    }
+    .ds-header p {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(26,26,26,0.6); margin-top: 8px;
+    }
+
+    /* ============================================================
+       LAYOUT
+    ============================================================ */
+    .ds-wrap { max-width: 1160px; margin: 0 auto; padding: 56px 24px 96px; }
+
+    .ds-section { margin-bottom: 72px; }
+
+    .ds-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 40px; letter-spacing: 0.04em;
+      color: #F5823A;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(245,130,58,0.25);
+      margin-bottom: 28px;
+      display: flex; align-items: baseline; gap: 12px;
+    }
+    .ds-title .num {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 500;
+      color: rgba(245,130,58,0.45); letter-spacing: 0.06em;
+    }
+
+    .ds-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: #555; margin-bottom: 12px;
+    }
+
+    .ds-panel {
+      background: #222;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 28px;
+    }
+
+    .ds-row {
+      display: flex; flex-wrap: wrap;
+      gap: 14px; align-items: flex-start;
+    }
+
+    .divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 24px 0;
+    }
+
+    /* ============================================================
+       1. COLOR SWATCHES
+    ============================================================ */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 10px;
+    }
+    .swatch {
+      border-radius: 10px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .swatch-bg { height: 68px; }
+    .swatch-info { background: #2a2a2a; padding: 9px 11px; }
+    .swatch-name { font-size: 12px; font-weight: 600; color: #EDE3D0; }
+    .swatch-hex  { font-size: 10px; color: #555; margin-top: 2px; }
+
+    /* ============================================================
+       3. BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 7px; padding: 10px 22px; border-radius: 8px;
+      font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600;
+      cursor: pointer; border: none; transition: all 0.2s ease;
+      text-decoration: none; letter-spacing: 0.01em; white-space: nowrap;
+    }
+    .btn:hover  { transform: translateY(-1px); opacity: 0.9; }
+    .btn:active { transform: scale(0.98); }
+
+    .btn-sm { padding: 6px 14px; font-size: 12px; }
+    .btn-lg { padding: 14px 32px; font-size: 16px; }
+
+    .btn-primary  { background: #F5823A; color: #EDE3D0; }
+    .btn-primary:hover { background: #e87430; box-shadow: 0 4px 18px rgba(245,130,58,0.38); }
+
+    .btn-secondary { background: #EDE3D0; color: #1A1A1A; }
+    .btn-secondary:hover { background: #F5EDD8; }
+
+    .btn-ghost {
+      background: transparent; color: #EDE3D0;
+      border: 1.5px solid rgba(237,227,208,0.35);
+    }
+    .btn-ghost:hover {
+      border-color: rgba(245,130,58,0.55);
+      color: #F5823A;
+      background: rgba(245,130,58,0.07);
+    }
+
+    /* ============================================================
+       4. CARDS
+    ============================================================ */
+    .card {
+      background: #222;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; overflow: hidden;
+    }
+    .card-header { padding: 20px 22px 0; }
+    .card-title  {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 22px; letter-spacing: 0.04em; color: #EDE3D0;
+      margin-top: 8px;
+    }
+    .card-desc { font-size: 12px; color: #555; margin-top: 3px; }
+    .card-body  { padding: 14px 22px; font-size: 13px; color: #9a8e80; line-height: 1.6; }
+    .card-footer {
+      padding: 14px 22px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    /* progress bar */
+    .prog-track {
+      height: 4px; border-radius: 999px;
+      background: rgba(255,255,255,0.08); overflow: hidden;
+    }
+    .prog-fill {
+      height: 100%; border-radius: 999px;
+      background: linear-gradient(90deg, #F5823A, #F5C842);
+    }
+
+    /* ============================================================
+       5. BADGES
+    ============================================================ */
+    .badge {
+      display: inline-flex; align-items: center;
+      padding: 3px 11px; border-radius: 999px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+    }
+    .badge-orange  { background: #F5823A; color: #EDE3D0; }
+    .badge-yellow  { background: #F5C842; color: #1A1A1A; }
+    .badge-red     { background: #E8352A; color: #EDE3D0; }
+    .badge-blue    { background: #5BB8D4; color: #1A1A1A; }
+    .badge-gold    { background: linear-gradient(135deg,#F5C842,#F5823A); color: #1A1A1A; }
+    .badge-silver  { background: linear-gradient(135deg,#C8C8C8,#A0A0A0); color: #1A1A1A; }
+    .badge-bronze  { background: linear-gradient(135deg,#CD9F5A,#A07228); color: #EDE3D0; }
+    .badge-dark    { background: rgba(255,255,255,0.09); color: #EDE3D0; }
+    .badge-outline { background: transparent; border: 1.5px solid rgba(237,227,208,0.3); color: #EDE3D0; }
+    .badge-green   { background: rgba(106,172,112,0.18); border: 1px solid rgba(106,172,112,0.35); color: #6aac70; }
+
+    .score-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 4px 13px; border-radius: 999px;
+      background: rgba(245,130,58,0.11);
+      border: 1px solid rgba(245,130,58,0.32);
+      font-family: 'Bebas Neue', cursive;
+      font-size: 17px; color: #F5823A; letter-spacing: 0.06em;
+    }
+
+    /* ============================================================
+       6. INPUTS
+    ============================================================ */
+    .input-label {
+      display: block; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: #555; margin-bottom: 7px;
+    }
+    .input {
+      display: block; width: 100%; padding: 10px 13px;
+      background: #2a2a2a;
+      border: 1.5px solid #3a3530;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif; font-size: 14px; color: #EDE3D0;
+      outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .input::placeholder { color: #555; }
+    .input:focus {
+      border-color: #F5823A;
+      box-shadow: 0 0 0 3px rgba(245,130,58,0.16);
+    }
+    .input-icon-wrap { position: relative; }
+    .input-icon-wrap .input { padding-left: 38px; }
+    .input-icon-wrap svg {
+      position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%); color: #555; pointer-events: none;
+    }
+
+    /* ============================================================
+       7. RANKING
+    ============================================================ */
+    .rank-list { display: flex; flex-direction: column; gap: 8px; }
+
+    .rank-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 11px 15px; border-radius: 10px;
+      background: #222; border: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.15s;
+    }
+    .rank-item:hover { background: #2a2a2a; }
+    .rank-item.top   { border-color: rgba(245,200,66,0.28); background: rgba(245,200,66,0.04); }
+    .rank-item.self  { border-color: rgba(245,130,58,0.38); background: rgba(245,130,58,0.05); }
+
+    .rank-pos {
+      width: 30px; height: 30px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', cursive; font-size: 15px; flex-shrink: 0;
+    }
+    .rp-1 { background: linear-gradient(135deg,#F5C842,#F5823A); color: #1A1A1A; }
+    .rp-2 { background: linear-gradient(135deg,#C8C8C8,#909090); color: #1A1A1A; }
+    .rp-3 { background: linear-gradient(135deg,#CD9F5A,#A07228); color: #1A1A1A; }
+    .rp-n { background: rgba(255,255,255,0.08); color: #555; }
+    .rp-me {
+      background: rgba(255,255,255,0.08); color: #F5823A;
+      border: 1.5px solid rgba(245,130,58,0.38);
+    }
+
+    .rank-avatar {
+      width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: #EDE3D0;
+      background: linear-gradient(135deg,#F5823A,#E8352A);
+    }
+
+    .rank-info { flex: 1; min-width: 0; }
+    .rank-name {
+      font-size: 13px; font-weight: 600; color: #EDE3D0;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .rank-sub { font-size: 11px; color: #555; margin-top: 1px; }
+
+    .rank-pts {
+      font-family: 'Bebas Neue', cursive; font-size: 20px;
+      letter-spacing: 0.04em; color: #F5823A; flex-shrink: 0;
+    }
+    .rank-pts.gold   { color: #F5C842; }
+    .rank-pts.silver { color: #C8C8C8; }
+    .rank-pts.bronze { color: #CD9F5A; }
+
+    /* ============================================================
+       8. CHECKPOINT CARDS
+    ============================================================ */
+    .cp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 16px;
+    }
+
+    .cp-card { border-radius: 14px; overflow: hidden; }
+
+    /* — unlocked default — */
+    .cp-card.unlocked {
+      background: #222;
+      border: 1px solid rgba(245,130,58,0.32);
+    }
+    .cp-card.unlocked .cp-top {
+      background: linear-gradient(135deg,#F5823A 0%,#E8352A 55%,#F5C842 100%);
+      padding: 18px 20px; position: relative; overflow: hidden;
+    }
+    .cp-card.unlocked .cp-top::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.12;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 128px;
+    }
+    .cp-turn {
+      font-size: 9px; font-weight: 800; letter-spacing: 0.14em;
+      text-transform: uppercase; margin-bottom: 3px;
+    }
+    .cp-card.unlocked .cp-turn { color: rgba(26,26,26,0.55); }
+    .cp-card-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 24px; letter-spacing: 0.04em; line-height: 1.1;
+    }
+    .cp-card.unlocked .cp-card-title { color: #1A1A1A; }
+    .cp-card.unlocked .cp-time { font-size: 11px; color: rgba(26,26,26,0.45); margin-top: 3px; }
+
+    .cp-body { padding: 14px 18px; }
+    .cp-desc { font-size: 12px; color: #9a8e80; line-height: 1.5; margin-bottom: 13px; }
+    .cp-meta { display: flex; align-items: center; justify-content: space-between; }
+    .cp-pts  {
+      font-family: 'Bebas Neue', cursive; font-size: 19px;
+      letter-spacing: 0.04em; color: #F5823A;
+    }
+
+    /* — done — */
+    .cp-card.done {
+      background: #222;
+      border: 1px solid rgba(106,172,112,0.35);
+    }
+    .cp-card.done .cp-top {
+      background: linear-gradient(135deg,#2a6b30,#1a4820);
+      padding: 18px 20px; position: relative;
+    }
+    .cp-card.done .cp-turn  { color: rgba(237,227,208,0.4); }
+    .cp-card.done .cp-card-title { color: #EDE3D0; }
+    .cp-card.done .cp-time  { font-size: 11px; color: rgba(237,227,208,0.35); margin-top: 3px; }
+    .cp-card.done .cp-desc  { color: #6aac70; }
+    .cp-card.done .cp-pts   { color: #F5C842; }
+    .done-tick {
+      position: absolute; top: 12px; right: 14px;
+      width: 22px; height: 22px;
+      background: rgba(106,172,112,0.25); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* — live — */
+    .cp-card.live {
+      background: #222;
+      border: 1px solid rgba(91,184,212,0.45);
+    }
+    .cp-card.live .cp-top {
+      background: linear-gradient(135deg,#5BB8D4 0%,#F5823A 65%,#E8352A 100%);
+      padding: 18px 20px; position: relative; overflow: hidden;
+    }
+    .cp-card.live .cp-turn  { color: rgba(26,26,26,0.55); }
+    .cp-card.live .cp-card-title { color: #1A1A1A; }
+    .cp-card.live .cp-time  { font-size: 11px; color: rgba(26,26,26,0.45); margin-top: 3px; }
+    .live-pill {
+      position: absolute; top: 12px; right: 12px;
+      display: flex; align-items: center; gap: 5px;
+      background: rgba(26,26,26,0.25); border-radius: 999px;
+      padding: 3px 9px; backdrop-filter: blur(4px);
+    }
+    .live-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #fff; animation: livePulse 1s ease-in-out infinite;
+    }
+    .live-text {
+      font-size: 9px; font-weight: 800;
+      letter-spacing: 0.12em; color: #1A1A1A;
+    }
+
+    /* — locked — */
+    .cp-card.locked {
+      background: #1c1c1c;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .cp-card.locked .cp-top {
+      background: #262626;
+      padding: 18px 20px; min-height: 88px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cp-card.locked .cp-turn      { color: rgba(237,227,208,0.18); }
+    .cp-card.locked .cp-card-title { color: rgba(237,227,208,0.18); }
+    .cp-card.locked .cp-time      { font-size: 11px; color: rgba(115,115,115,0.4); margin-top: 3px; }
+    .cp-card.locked .cp-desc      { color: rgba(115,115,115,0.38); }
+    .cp-card.locked .cp-pts       { color: rgba(245,130,58,0.22); }
+    .cp-card.locked .btn { opacity: 0.28; cursor: not-allowed; pointer-events: none; }
+    .lock-svg { opacity: 0.22; }
+
+    /* ============================================================
+       CODE BLOCK
+    ============================================================ */
+    .code-wrap {
+      background: #0d0d0d;
+      border: 1px solid rgba(245,130,58,0.18);
+      border-radius: 12px; padding: 26px; overflow-x: auto;
+    }
+    .code-wrap pre {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 12.5px; line-height: 1.85; color: #EDE3D0; white-space: pre;
+    }
+    .cv { color: #5BB8D4; }   /* var name */
+    .cc { color: #F5C842; }   /* value */
+    .cm { color: #484848; }   /* comment */
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .ds-footer {
+      text-align: center; padding: 36px 24px 48px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .ds-footer-brand {
+      font-family: 'Bebas Neue', cursive; font-size: 22px;
+      letter-spacing: 0.1em;
+      background: linear-gradient(90deg,#F5823A,#F5C842);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .ds-footer-sub { font-size: 11px; color: #444; margin-top: 5px; letter-spacing: 0.08em; }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+     HEADER
+================================================================ -->
+<header class="ds-header">
+  <div class="ds-header-inner">
+    <h1>Revival Conference</h1>
+    <p>Design System &nbsp;·&nbsp; Referência Visual para Gamificação &nbsp;·&nbsp; 2026</p>
+  </div>
+</header>
+
+<main class="ds-wrap">
+
+  <!-- ==============================================================
+       01 · PALETA DE CORES
+  ============================================================== -->
+  <section class="ds-section">
+    <h2 class="ds-title"><span class="num">01</span> Paleta de Cores</h2>
+
+    <p class="ds-label">Cores Principais da Marca</p>
+    <div class="color-grid" style="margin-bottom:24px;">
+      <div class="swatch">
+        <div class="swatch-bg" style="background:#F5823A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Laranja</div>
+          <div class="swatch-hex">#F5823A &nbsp;·&nbsp; --rvl-laranja</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-bg" style="background:#F5C842;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Amarelo</div>
+          <div class="swatch-hex">#F5C842 &nbsp;·&nbsp; --rvl-amarelo</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-bg" style="background:#E8352A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Vermelho</div>
+          <div class="swatch-hex">#E8352A &nbsp;·&nbsp; --rvl-vermelho</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-bg" style="background:#5BB8D4;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Azul</div>
+          <div class="swatch-hex">#5BB8D4 &nbsp;·&nbsp; --rvl-azul</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-bg" style="background:#EDE3D0; border-bottom:1px solid rgba(255,255,255,0.1);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Creme</div>
+          <div class="swatch-hex">#EDE3D0 &nbsp;·&nbsp; --rvl-creme</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-bg" style="background:#F5F1E8; border-bottom:1px solid rgba(255,255,255,0.1);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Creme BG</div>
+          <div class="swatch-hex">#F5F1E8 &nbsp;·&nbsp; --rvl-creme-bg</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-bg" style="background:#1A1A1A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Escuro</div>
+          <div class="swatch-hex">#1A1A1A &nbsp;·&nbsp; --rvl-escuro</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-bg" style="background:#0d0d0d;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Ground</div>
+          <div class="swatch-hex">#0d0d0d &nbsp;·&nbsp; --game-ground</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="ds-label">Cores Utilitárias</p>
+    <div class="color-grid" style="margin-bottom:28px;">
+      <div class="swatch">
+        <div class="swatch-bg" style="background:#EFECE7; border-bottom:1px solid rgba(255,255,255,0.1);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Muted BG</div>
+          <div class="swatch-hex">#EFECE7 &nbsp;·&nbsp; --rvl-exp-bg</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-bg" style="background:#E0DAD1; border-bottom:1px solid rgba(255,255,255,0.1);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Border</div>
+          <div class="swatch-hex">#E0DAD1 &nbsp;·&nbsp; --border</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-bg" style="background:#737373;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Muted FG</div>
+          <div class="swatch-hex">#737373 &nbsp;·&nbsp; --muted-fg</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-bg" style="background:#1a0a2e;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Sky Top</div>
+          <div class="swatch-hex">#1a0a2e &nbsp;·&nbsp; --game-sky-top</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="ds-label">Gradientes</p>
+    <div class="ds-row">
+      <div style="flex:1; min-width:160px;">
+        <div style="height:64px; border-radius:10px; background:linear-gradient(135deg,#F5823A 0%,#F5C842 25%,#E8352A 60%,#5BB8D4 100%);"></div>
+        <div style="font-size:11px; color:#444; margin-top:6px; text-align:center;">Hero Gradient</div>
+      </div>
+      <div style="flex:1; min-width:160px;">
+        <div style="height:64px; border-radius:10px; background:linear-gradient(180deg,#1a0a2e 0%,#5BB8D4 50%,#F5823A 100%);"></div>
+        <div style="font-size:11px; color:#444; margin-top:6px; text-align:center;">Game Sky — Noite</div>
+      </div>
+      <div style="flex:1; min-width:160px;">
+        <div style="height:64px; border-radius:10px; background:linear-gradient(180deg,#5BB8D4 0%,#F5823A 35%,#E8352A 65%,#F5C842 100%);"></div>
+        <div style="font-size:11px; color:#444; margin-top:6px; text-align:center;">Game Sky — Amanhecer</div>
+      </div>
+      <div style="flex:1; min-width:160px;">
+        <div style="height:64px; border-radius:10px; background:linear-gradient(135deg,#F5823A,#E8352A);"></div>
+        <div style="font-size:11px; color:#444; margin-top:6px; text-align:center;">Checkpoint — Ativo</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       02 · TIPOGRAFIA
+  ============================================================== -->
+  <section class="ds-section">
+    <h2 class="ds-title"><span class="num">02</span> Tipografia</h2>
+
+    <div class="ds-panel">
+      <!-- Bebas Neue -->
+      <div style="padding-bottom:20px; border-bottom:1px solid rgba(255,255,255,0.06);">
+        <p class="ds-label" style="margin-bottom:18px;">Bebas Neue — Display & Heading &nbsp;<span style="color:#333;">var(--font-bebas)</span></p>
+
+        <div style="margin-bottom:10px;">
+          <div style="font-size:10px; color:#444; margin-bottom:4px; font-family:monospace;">64px · Display</div>
+          <div style="font-family:'Bebas Neue',cursive; font-size:64px; color:#F5823A; line-height:1; letter-spacing:0.04em;">Um Novo Amanhecer</div>
+        </div>
+        <div style="margin-bottom:10px;">
+          <div style="font-size:10px; color:#444; margin-bottom:4px; font-family:monospace;">40px · H1</div>
+          <div style="font-family:'Bebas Neue',cursive; font-size:40px; color:#EDE3D0; line-height:1.1; letter-spacing:0.04em;">Revival Conference 2026</div>
+        </div>
+        <div style="margin-bottom:10px;">
+          <div style="font-size:10px; color:#444; margin-bottom:4px; font-family:monospace;">28px · H2 / Section</div>
+          <div style="font-family:'Bebas Neue',cursive; font-size:28px; color:#EDE3D0; letter-spacing:0.04em;">Ranking dos Participantes</div>
+        </div>
+        <div style="margin-bottom:10px;">
+          <div style="font-size:10px; color:#444; margin-bottom:4px; font-family:monospace;">22px · H3 / Card Title</div>
+          <div style="font-family:'Bebas Neue',cursive; font-size:22px; color:#EDE3D0; letter-spacing:0.04em;">Noite de Fogo</div>
+        </div>
+        <div>
+          <div style="font-size:10px; color:#444; margin-bottom:4px; font-family:monospace;">18px · Score / Label</div>
+          <div style="font-family:'Bebas Neue',cursive; font-size:18px; color:#F5C842; letter-spacing:0.06em;">1.250 PONTOS</div>
+        </div>
+      </div>
+
+      <!-- Inter -->
+      <div style="padding:20px 0; border-bottom:1px solid rgba(255,255,255,0.06);">
+        <p class="ds-label" style="margin-bottom:18px;">Inter — Body & UI &nbsp;<span style="color:#333;">var(--font-inter)</span></p>
+
+        <div style="margin-bottom:10px;">
+          <div style="font-size:10px; color:#444; margin-bottom:4px; font-family:monospace;">Inter 700 · 18px · Strong Body</div>
+          <div style="font-family:'Inter',sans-serif; font-size:18px; font-weight:700; color:#EDE3D0;">Cada turno tem uma missão única.</div>
+        </div>
+        <div style="margin-bottom:10px;">
+          <div style="font-size:10px; color:#444; margin-bottom:4px; font-family:monospace;">Inter 500 · 15px · Body</div>
+          <div style="font-family:'Inter',sans-serif; font-size:15px; font-weight:500; color:#9a8e80; line-height:1.6;">Participe dos momentos, complete os checkpoints e acumule pontos para chegar ao topo do ranking da Revival Conference 2026.</div>
+        </div>
+        <div style="margin-bottom:10px;">
+          <div style="font-size:10px; color:#444; margin-bottom:4px; font-family:monospace;">Inter 400 · 13px · Caption</div>
+          <div style="font-family:'Inter',sans-serif; font-size:13px; font-weight:400; color:#555;">Última atualização: há 2 minutos &nbsp;·&nbsp; 127 participantes</div>
+        </div>
+        <div>
+          <div style="font-size:10px; color:#444; margin-bottom:4px; font-family:monospace;">Inter 700 · 10px · Label Uppercase</div>
+          <div style="font-family:'Inter',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#555;">Turno Atual &nbsp;·&nbsp; Ao Vivo &nbsp;·&nbsp; Check-in</div>
+        </div>
+      </div>
+
+      <!-- Caveat -->
+      <div style="padding-top:20px;">
+        <p class="ds-label" style="margin-bottom:18px;">Caveat — Decorativo &nbsp;<span style="color:#333;">var(--font-caveat)</span></p>
+        <div style="margin-bottom:10px;">
+          <div style="font-size:10px; color:#444; margin-bottom:4px; font-family:monospace;">Caveat 700 · 32px</div>
+          <div style="font-family:'Caveat',cursive; font-size:32px; font-weight:700; color:#5BB8D4; line-height:1.2;">"O amanhecer já está chegando"</div>
+        </div>
+        <div>
+          <div style="font-size:10px; color:#444; margin-bottom:4px; font-family:monospace;">Caveat 400 · 20px</div>
+          <div style="font-family:'Caveat',cursive; font-size:20px; color:#F5C842;">Desbloqueie o próximo turno!</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       03 · BOTÕES
+  ============================================================== -->
+  <section class="ds-section">
+    <h2 class="ds-title"><span class="num">03</span> Botões</h2>
+
+    <div class="ds-panel">
+      <!-- Primário -->
+      <p class="ds-label">Primário</p>
+      <div class="ds-row" style="align-items:center; margin-bottom:22px;">
+        <button class="btn btn-primary btn-sm">Pequeno</button>
+        <button class="btn btn-primary">Participar</button>
+        <button class="btn btn-primary btn-lg">Confirmar Presença</button>
+        <button class="btn btn-primary" disabled style="opacity:.38; cursor:not-allowed;">Desabilitado</button>
+      </div>
+
+      <!-- Secundário -->
+      <p class="ds-label">Secundário</p>
+      <div class="ds-row" style="align-items:center; margin-bottom:22px;">
+        <button class="btn btn-secondary btn-sm">Pequeno</button>
+        <button class="btn btn-secondary">Ver Ranking</button>
+        <button class="btn btn-secondary btn-lg">Saiba Mais</button>
+        <button class="btn btn-secondary" disabled style="opacity:.38; cursor:not-allowed;">Desabilitado</button>
+      </div>
+
+      <!-- Ghost -->
+      <p class="ds-label">Ghost</p>
+      <div class="ds-row" style="align-items:center; margin-bottom:22px;">
+        <button class="btn btn-ghost btn-sm">Pequeno</button>
+        <button class="btn btn-ghost">Detalhes</button>
+        <button class="btn btn-ghost btn-lg">Ver Tudo</button>
+        <button class="btn btn-ghost" disabled style="opacity:.3; cursor:not-allowed;">Desabilitado</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Com ícones -->
+      <p class="ds-label">Com Ícones</p>
+      <div class="ds-row" style="align-items:center;">
+        <button class="btn btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Pontuar
+        </button>
+        <button class="btn btn-secondary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Ranking
+        </button>
+        <button class="btn btn-ghost">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 12 12 14 14"/></svg>
+          Histórico
+        </button>
+        <button class="btn btn-ghost">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          Menu
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       04 · CARDS
+  ============================================================== -->
+  <section class="ds-section">
+    <h2 class="ds-title"><span class="num">04</span> Cards</h2>
+
+    <div class="ds-row">
+      <!-- Card de turno -->
+      <div class="card" style="flex:1; min-width:250px; max-width:360px;">
+        <div class="card-header">
+          <span class="badge badge-orange">Turno 2</span>
+          <div class="card-title">Manhã de Adoração</div>
+          <div class="card-desc">Domingo, 09h – 11h30</div>
+        </div>
+        <div class="card-body">Mergulhe na presença de Deus e receba os ensinamentos deste turno presencialmente.</div>
+        <div class="card-footer">
+          <span class="score-badge">+250 pts</span>
+          <button class="btn btn-primary btn-sm">Check-in</button>
+        </div>
+      </div>
+
+      <!-- Card de pontuação pessoal -->
+      <div class="card" style="flex:1; min-width:250px; max-width:360px; border-color:rgba(245,130,58,0.3);">
+        <div style="background:linear-gradient(135deg,rgba(245,130,58,0.14),rgba(232,53,42,0.08)); padding:18px 22px; border-bottom:1px solid rgba(245,130,58,0.18);">
+          <div style="font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#F5823A; margin-bottom:4px;">Sua Pontuação</div>
+          <div style="font-family:'Bebas Neue',cursive; font-size:52px; color:#F5C842; line-height:1; letter-spacing:0.04em;">1.720</div>
+          <div style="font-size:12px; color:#555; margin-top:2px;">pontos acumulados</div>
+        </div>
+        <div class="card-body" style="padding-bottom:8px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-size:12px; color:#555;">Posição no ranking</span>
+            <span style="font-family:'Bebas Neue',cursive; font-size:22px; color:#F5823A;">#12</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:12px; color:#555;">Turnos completos</span>
+            <span style="font-size:13px; font-weight:600; color:#EDE3D0;">3 / 5</span>
+          </div>
+        </div>
+        <div class="card-footer" style="display:block;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+            <span style="font-size:10px; color:#555;">Progresso</span>
+            <span style="font-size:10px; color:#F5823A; font-weight:700;">60%</span>
+          </div>
+          <div class="prog-track"><div class="prog-fill" style="width:60%;"></div></div>
+        </div>
+      </div>
+
+      <!-- Card de ranking snapshot -->
+      <div class="card" style="flex:1; min-width:250px; max-width:360px;">
+        <div class="card-header">
+          <span class="badge badge-gold">Top 3</span>
+          <div class="card-title">Ranking Geral</div>
+          <div class="card-desc">127 participantes · atualizado ao vivo</div>
+        </div>
+        <div class="card-body" style="padding-top:14px; padding-bottom:6px;">
+          <div style="display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px solid rgba(255,255,255,0.05);">
+            <span style="font-size:13px; color:#EDE3D0; font-weight:600;">🥇 Ana Silva</span>
+            <span style="font-family:'Bebas Neue',cursive; font-size:18px; color:#F5C842;">3.450</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px solid rgba(255,255,255,0.05);">
+            <span style="font-size:13px; color:#EDE3D0; font-weight:600;">🥈 João Pedro</span>
+            <span style="font-family:'Bebas Neue',cursive; font-size:18px; color:#C8C8C8;">3.200</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:7px 0;">
+            <span style="font-size:13px; color:#EDE3D0; font-weight:600;">🥉 Maria</span>
+            <span style="font-family:'Bebas Neue',cursive; font-size:18px; color:#CD9F5A;">2.980</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span style="font-size:12px; color:#555;">Você está em #12</span>
+          <button class="btn btn-ghost btn-sm">Ver Tudo</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       05 · BADGES & TAGS
+  ============================================================== -->
+  <section class="ds-section">
+    <h2 class="ds-title"><span class="num">05</span> Badges &amp; Tags</h2>
+
+    <div class="ds-panel">
+      <p class="ds-label">Status de Turno</p>
+      <div class="ds-row" style="margin-bottom:22px;">
+        <span class="badge badge-orange">Turno 1</span>
+        <span class="badge badge-orange">Turno 2</span>
+        <span class="badge badge-orange">Turno 3</span>
+        <span class="badge badge-orange">Turno 4</span>
+        <span class="badge badge-orange">Turno Final</span>
+        <span class="badge badge-blue" style="display:flex; align-items:center; gap:5px;">
+          <span style="width:6px; height:6px; border-radius:50%; background:#1A1A1A; animation:livePulse 1s ease-in-out infinite;"></span>
+          Ao Vivo
+        </span>
+        <span class="badge badge-dark">Em Breve</span>
+        <span class="badge badge-outline" style="border-color:rgba(232,53,42,0.4); color:#E8352A;">Encerrado</span>
+      </div>
+
+      <p class="ds-label">Ranking &amp; Conquistas</p>
+      <div class="ds-row" style="margin-bottom:22px;">
+        <span class="badge badge-gold">🥇 Top 1</span>
+        <span class="badge badge-silver">🥈 Top 2</span>
+        <span class="badge badge-bronze">🥉 Top 3</span>
+        <span class="badge badge-dark">Top 10</span>
+        <span class="badge badge-outline">Top 50</span>
+        <span class="badge badge-green">✓ Concluído</span>
+      </div>
+
+      <p class="ds-label">Pontuação</p>
+      <div class="ds-row" style="margin-bottom:22px;">
+        <span class="score-badge">+100 pts</span>
+        <span class="score-badge">+250 pts</span>
+        <span class="score-badge">+500 pts</span>
+        <span class="score-badge" style="color:#F5C842; border-color:rgba(245,200,66,0.35); background:rgba(245,200,66,0.09);">+1000 pts</span>
+        <span class="score-badge" style="color:#E8352A; border-color:rgba(232,53,42,0.35); background:rgba(232,53,42,0.09);">−50 pts</span>
+      </div>
+
+      <p class="ds-label">Cores Variantes</p>
+      <div class="ds-row">
+        <span class="badge badge-orange">Laranja</span>
+        <span class="badge badge-yellow">Amarelo</span>
+        <span class="badge badge-red">Vermelho</span>
+        <span class="badge badge-blue">Azul</span>
+        <span class="badge badge-dark">Escuro</span>
+        <span class="badge badge-outline">Outline</span>
+        <span class="badge badge-green">Verde</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       06 · INPUTS
+  ============================================================== -->
+  <section class="ds-section">
+    <h2 class="ds-title"><span class="num">06</span> Inputs</h2>
+
+    <div class="ds-panel" style="max-width:500px;">
+      <div style="margin-bottom:18px;">
+        <label class="input-label">Nome Completo</label>
+        <input class="input" type="text" placeholder="Digite seu nome..." />
+      </div>
+      <div style="margin-bottom:18px;">
+        <label class="input-label">Código de Check-in</label>
+        <input class="input" type="text" placeholder="Ex: RVL-2026-TURNO1" />
+      </div>
+      <div style="margin-bottom:18px;">
+        <label class="input-label">Buscar Participante</label>
+        <div class="input-icon-wrap">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input class="input" type="text" placeholder="Buscar por nome..." />
+        </div>
+      </div>
+      <div>
+        <label class="input-label">Estado: Foco</label>
+        <input class="input" type="text" placeholder="Em foco..." style="border-color:#F5823A; box-shadow:0 0 0 3px rgba(245,130,58,0.16);" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       07 · RANKING ITEM
+  ============================================================== -->
+  <section class="ds-section">
+    <h2 class="ds-title"><span class="num">07</span> Ranking Item</h2>
+
+    <div style="max-width:560px;">
+      <div class="rank-list">
+
+        <div class="rank-item top">
+          <div class="rank-pos rp-1">1</div>
+          <div class="rank-avatar" style="background:linear-gradient(135deg,#F5C842,#F5823A);">AS</div>
+          <div class="rank-info">
+            <div class="rank-name">Ana Silva</div>
+            <div class="rank-sub">7 turnos completos</div>
+          </div>
+          <span class="badge badge-gold" style="font-size:9px;">🥇 Líder</span>
+          <div class="rank-pts gold">3.450</div>
+        </div>
+
+        <div class="rank-item top">
+          <div class="rank-pos rp-2">2</div>
+          <div class="rank-avatar" style="background:linear-gradient(135deg,#C8C8C8,#909090); color:#1A1A1A;">JP</div>
+          <div class="rank-info">
+            <div class="rank-name">João Pedro</div>
+            <div class="rank-sub">6 turnos completos</div>
+          </div>
+          <div class="rank-pts silver">3.200</div>
+        </div>
+
+        <div class="rank-item top">
+          <div class="rank-pos rp-3">3</div>
+          <div class="rank-avatar" style="background:linear-gradient(135deg,#CD9F5A,#A07228);">MA</div>
+          <div class="rank-info">
+            <div class="rank-name">Maria Aparecida</div>
+            <div class="rank-sub">6 turnos completos</div>
+          </div>
+          <div class="rank-pts bronze">2.980</div>
+        </div>
+
+        <div class="rank-item">
+          <div class="rank-pos rp-n">4</div>
+          <div class="rank-avatar" style="background:linear-gradient(135deg,#5BB8D4,#3a8fa8);">RC</div>
+          <div class="rank-info">
+            <div class="rank-name">Rafael Costa</div>
+            <div class="rank-sub">5 turnos completos</div>
+          </div>
+          <div class="rank-pts">2.700</div>
+        </div>
+
+        <!-- você -->
+        <div class="rank-item self">
+          <div class="rank-pos rp-me">12</div>
+          <div class="rank-avatar">VC</div>
+          <div class="rank-info">
+            <div class="rank-name" style="color:#F5823A;">Você</div>
+            <div class="rank-sub">3 turnos completos</div>
+          </div>
+          <span class="badge badge-outline" style="font-size:9px; border-color:rgba(245,130,58,0.4); color:#F5823A;">você</span>
+          <div class="rank-pts">1.720</div>
+        </div>
+
+        <div class="rank-item">
+          <div class="rank-pos rp-n">13</div>
+          <div class="rank-avatar" style="background:linear-gradient(135deg,#737373,#555);">LF</div>
+          <div class="rank-info">
+            <div class="rank-name">Lucas Ferreira</div>
+            <div class="rank-sub">3 turnos completos</div>
+          </div>
+          <div class="rank-pts">1.650</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       08 · CHECKPOINT CARDS
+  ============================================================== -->
+  <section class="ds-section">
+    <h2 class="ds-title"><span class="num">08</span> Checkpoint Cards</h2>
+
+    <div class="cp-grid">
+
+      <!-- DESBLOQUEADO — disponível -->
+      <div class="cp-card unlocked">
+        <div class="cp-top">
+          <div style="position:relative; z-index:1;">
+            <div class="cp-turn">Turno 1</div>
+            <div class="cp-card-title">Abertura &amp; Adoração</div>
+            <div class="cp-time">Sábado, 19h – 22h</div>
+          </div>
+        </div>
+        <div class="cp-body">
+          <div class="cp-desc">Check-in disponível durante o turno. Pontue participando presencialmente.</div>
+          <div class="cp-meta">
+            <span class="cp-pts">+250 pts</span>
+            <button class="btn btn-primary btn-sm">Check-in →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- DESBLOQUEADO — ao vivo -->
+      <div class="cp-card live">
+        <div class="cp-top">
+          <div style="position:relative; z-index:1;">
+            <div class="cp-turn">Turno 3</div>
+            <div class="cp-card-title">Tarde de Unção</div>
+            <div class="cp-time">Domingo, 14h – 17h30</div>
+          </div>
+          <div class="live-pill">
+            <div class="live-dot"></div>
+            <span class="live-text">Ao Vivo</span>
+          </div>
+        </div>
+        <div class="cp-body">
+          <div class="cp-desc">Acontecendo agora! Faça seu check-in para pontuar neste turno.</div>
+          <div class="cp-meta">
+            <span class="cp-pts">+300 pts</span>
+            <button class="btn btn-primary btn-sm">Check-in →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONCLUÍDO -->
+      <div class="cp-card done">
+        <div class="cp-top">
+          <div style="position:relative; z-index:1;">
+            <div class="cp-turn">Turno 2</div>
+            <div class="cp-card-title">Manhã de Palavra</div>
+            <div class="cp-time">Domingo, 09h – 12h</div>
+          </div>
+          <div class="done-tick">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6aac70" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+        <div class="cp-body">
+          <div class="cp-desc">Check-in realizado com sucesso!</div>
+          <div class="cp-meta">
+            <span class="cp-pts">+250 pts</span>
+            <span class="badge badge-green">✓ Concluído</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOQUEADO -->
+      <div class="cp-card locked">
+        <div class="cp-top">
+          <svg class="lock-svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#EDE3D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <div class="cp-body">
+          <div class="cp-turn">Turno 4</div>
+          <div class="cp-card-title">Noite de Fogo</div>
+          <div class="cp-time" style="font-size:11px; margin-bottom:13px;">Dom, 19h · Disponível em breve</div>
+          <div class="cp-meta">
+            <span class="cp-pts">+350 pts</span>
+            <button class="btn btn-ghost btn-sm">Bloqueado</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOQUEADO — turno final -->
+      <div class="cp-card locked">
+        <div class="cp-top">
+          <svg class="lock-svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#EDE3D0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <div class="cp-body">
+          <div class="cp-turn">Turno Final</div>
+          <div class="cp-card-title">Encerramento</div>
+          <div class="cp-time" style="font-size:11px; margin-bottom:13px;">Dom, 20h · Disponível em breve</div>
+          <div class="cp-meta">
+            <span class="cp-pts">+500 pts</span>
+            <button class="btn btn-ghost btn-sm">Bloqueado</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       09 · VARIÁVEIS CSS
+  ============================================================== -->
+  <section class="ds-section">
+    <h2 class="ds-title"><span class="num">09</span> Variáveis CSS</h2>
+
+    <div class="code-wrap">
+      <pre><span class="cm">/* ──────────────────────────────────────────────
+   Revival Conference — Design Tokens
+   Copie este bloco :root para o projeto Lovable
+────────────────────────────────────────────── */</span>
+<span class="cv">:root</span> {
+
+  <span class="cm">/* ── Cores da Marca ── */</span>
+  <span class="cv">--rvl-laranja</span>:          <span class="cc">#F5823A</span>;   <span class="cm">/* hsl(16 79% 54%)  · CTA principal */</span>
+  <span class="cv">--rvl-amarelo</span>:          <span class="cc">#F5C842</span>;   <span class="cm">/* hsl(43 89% 61%)  · Ouro / Top ranking */</span>
+  <span class="cv">--rvl-vermelho</span>:         <span class="cc">#E8352A</span>;   <span class="cm">/* hsl(5 79% 54%)   · Danger / Acento quente */</span>
+  <span class="cv">--rvl-azul</span>:             <span class="cc">#5BB8D4</span>;   <span class="cm">/* hsl(195 55% 59%) · Acento frio / Ao Vivo */</span>
+  <span class="cv">--rvl-creme</span>:            <span class="cc">#EDE3D0</span>;   <span class="cm">/* hsl(40 42% 90%)  · Texto claro em fundo escuro */</span>
+  <span class="cv">--rvl-creme-bg</span>:         <span class="cc">#F5F1E8</span>;   <span class="cm">/* hsl(40 33% 96%)  · Fundo seções claras */</span>
+  <span class="cv">--rvl-escuro</span>:           <span class="cc">#1A1A1A</span>;   <span class="cm">/* hsl(0 0% 10%)    · Fundo principal (body) */</span>
+  <span class="cv">--rvl-exp-bg</span>:           <span class="cc">#EFECE7</span>;   <span class="cm">/* hsl(37 20% 92%)  · Fundo seção muted */</span>
+
+  <span class="cm">/* ── Cores de Cena (Game / Gamificação) ── */</span>
+  <span class="cv">--game-sky-top</span>:         <span class="cc">#1a0a2e</span>;   <span class="cm">/* Roxo profundo — céu noturno */</span>
+  <span class="cv">--game-sky-mid</span>:         <span class="cc">#5BB8D4</span>;   <span class="cm">/* Azul céu */</span>
+  <span class="cv">--game-sky-bottom</span>:      <span class="cc">#F5823A</span>;   <span class="cm">/* Laranja — horizonte */</span>
+  <span class="cv">--game-ground</span>:          <span class="cc">#0d0d0d</span>;   <span class="cm">/* Quase preto — chão */</span>
+  <span class="cv">--game-sun</span>:             <span class="cc">#F5C842</span>;   <span class="cm">/* Amarelo dourado — sol */</span>
+  <span class="cv">--game-sun-glow</span>:        <span class="cc">#F5823A</span>;   <span class="cm">/* Laranja — brilho do sol */</span>
+  <span class="cv">--game-cream</span>:           <span class="cc">#EDE9DC</span>;   <span class="cm">/* Creme suave — UI do jogo */</span>
+  <span class="cv">--game-red</span>:             <span class="cc">#E8352A</span>;   <span class="cm">/* Vermelho — erro / miss */</span>
+
+  <span class="cm">/* ── Tokens Semânticos de UI ── */</span>
+  <span class="cv">--background</span>:           <span class="cc">#F5F1E8</span>;   <span class="cm">/* hsl(40 33% 96%) */</span>
+  <span class="cv">--foreground</span>:           <span class="cc">#1A1A1A</span>;   <span class="cm">/* hsl(0 0% 10%) */</span>
+  <span class="cv">--primary</span>:              <span class="cc">#F5823A</span>;   <span class="cm">/* hsl(16 79% 54%) */</span>
+  <span class="cv">--primary-foreground</span>:   <span class="cc">#EDE3D0</span>;
+  <span class="cv">--secondary</span>:            <span class="cc">#EDE3D0</span>;   <span class="cm">/* hsl(40 42% 90%) */</span>
+  <span class="cv">--secondary-foreground</span>: <span class="cc">#1A1A1A</span>;
+  <span class="cv">--muted</span>:                <span class="cc">#EFECE7</span>;   <span class="cm">/* hsl(37 20% 92%) */</span>
+  <span class="cv">--muted-foreground</span>:     <span class="cc">#737373</span>;   <span class="cm">/* hsl(0 0% 45%) */</span>
+  <span class="cv">--accent</span>:               <span class="cc">#5BB8D4</span>;   <span class="cm">/* hsl(195 55% 59%) */</span>
+  <span class="cv">--accent-foreground</span>:    <span class="cc">#EDE3D0</span>;
+  <span class="cv">--destructive</span>:          <span class="cc">#E8352A</span>;   <span class="cm">/* hsl(5 79% 54%) */</span>
+  <span class="cv">--destructive-foreground</span>: <span class="cc">#EDE3D0</span>;
+  <span class="cv">--border</span>:               <span class="cc">#E0DAD1</span>;   <span class="cm">/* hsl(37 20% 85%) */</span>
+  <span class="cv">--input</span>:                <span class="cc">#E0DAD1</span>;
+  <span class="cv">--ring</span>:                 <span class="cc">#F5823A</span>;
+  <span class="cv">--radius</span>:               <span class="cc">0.5rem</span>;    <span class="cm">/* 8px — base border-radius */</span>
+
+  <span class="cm">/* ── Tipografia ── */</span>
+  <span class="cv">--font-bebas</span>:           <span class="cc">'Bebas Neue', cursive</span>;        <span class="cm">/* Headlines, display, scores */</span>
+  <span class="cv">--font-inter</span>:           <span class="cc">'Inter', sans-serif</span>;          <span class="cm">/* Body, labels, UI */</span>
+  <span class="cv">--font-caveat</span>:          <span class="cc">'Caveat', cursive</span>;            <span class="cm">/* Decorativo, quotes */</span>
+  <span class="cv">--font-teenage</span>:         <span class="cc">'Teenage Dreams Demo Bold', cursive</span>; <span class="cm">/* Branding (local) */</span>
+  <span class="cv">--font-antarctican</span>:     <span class="cc">'Antarctican Mono', monospace</span>; <span class="cm">/* Mono (local) */</span>
+
+  <span class="cm">/* ── Banner / Misc ── */</span>
+  <span class="cv">--banner-h</span>:             <span class="cc">36px</span>;   <span class="cm">/* 44px em md+ */</span>
+}</pre>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ds-footer">
+  <div class="ds-footer-brand">REVIVAL CONFERENCE 2026</div>
+  <div class="ds-footer-sub">Design System &nbsp;·&nbsp; Gamificação &nbsp;·&nbsp; Um Novo Amanhecer</div>
+</footer>
+
+</body>
+</html>

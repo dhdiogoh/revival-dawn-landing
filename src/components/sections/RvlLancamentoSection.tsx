@@ -25,12 +25,7 @@ const RvlLancamentoSection = () => {
 
         {/* COMBO RVL — destaque */}
         <div className="mb-12">
-          <p className="text-rvl-laranja font-medium mb-1 uppercase tracking-wider text-sm text-center font-inter">
-            RVL | LANÇAMENTO DA SEMANA
-          </p>
-          <h2 className="font-bebas text-rvl-escuro tracking-wide mb-8 leading-none text-center whitespace-nowrap" style={{ fontSize: 'clamp(1.4rem, 5.5vw, 3rem)' }}>
-            Lançamento da t-shirt da RVL
-          </h2>
+
 
           {/* Ticket COMBO destacado */}
           <div className="relative bg-rvl-escuro rounded-2xl shadow-2xl ring-2 ring-rvl-laranja/60 max-w-lg mx-auto overflow-visible">
@@ -38,7 +33,7 @@ const RvlLancamentoSection = () => {
             {/* Top stub */}
             <div className="px-8 pt-7 pb-5 text-center">
               <div className="inline-block bg-rvl-laranja/20 border border-rvl-laranja/40 text-rvl-laranja text-[10px] font-inter font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-3">
-                PRIMEIRO LOTE
+                TERCEIRO LOTE
               </div>
               <h3 className="font-bebas text-3xl text-rvl-creme tracking-wide leading-tight mb-2">
                 COMBO RVL
@@ -74,7 +69,7 @@ const RvlLancamentoSection = () => {
 
             {/* Bottom stub */}
             <div className="px-8 py-6 text-center">
-              <p className="font-bebas text-4xl text-rvl-creme tracking-wide mb-1">R$229</p>
+              <p className="font-bebas text-4xl text-rvl-creme tracking-wide mb-1">R$229,90</p>
               <p className="font-inter text-rvl-creme/40 text-xs mb-5">ingresso + t-shirt</p>
               <a
                 href={ticketUrl}
