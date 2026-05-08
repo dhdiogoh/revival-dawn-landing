@@ -1,11 +1,11 @@
 import { useState, useRef } from 'react';
 
 const shirtImages = [
-  { src: '/images/camisa-rvl1.jpg', position: 'object-center' },
-  { src: '/images/camisa-rvl2.jpg', position: 'object-top' },
-  { src: '/images/camisa-rvl3.jpg', position: 'object-top' },
-  { src: '/images/camisa-rvl4.jpg', position: 'object-top' },
-  { src: '/images/camisa-rvl5.jpg', position: 'object-center' },
+  { src: '/images/camisa-rvl1.jpg', pos: 'center' },
+  { src: '/images/camisa-rvl2.jpg', pos: '50% 15%' },
+  { src: '/images/camisa-rvl3.jpg', pos: 'top' },
+  { src: '/images/camisa-rvl4.jpg', pos: '50% 30%' },
+  { src: '/images/camisa-rvl5.jpg', pos: '50% 30%' },
 ];
 
 const RvlLancamentoSection = () => {
@@ -39,13 +39,14 @@ const RvlLancamentoSection = () => {
             key={active}
             src={shirtImages[active].src}
             alt={`T-shirt RVL 2026 — foto ${active + 1}`}
-            className={`w-full h-full object-cover animate-in fade-in duration-300 ${shirtImages[active].position}`}
+            className="w-full h-full object-cover animate-in fade-in duration-300"
+            style={{ objectPosition: shirtImages[active].pos }}
           />
         </div>
 
         {/* Thumbnails */}
         <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-1">
-          {shirtImages.map(({ src, position }, i) => (
+          {shirtImages.map(({ src, pos }, i) => (
             <button
               key={i}
               onClick={() => setActive(i)}
@@ -54,7 +55,7 @@ const RvlLancamentoSection = () => {
               }`}
               aria-label={`Ver foto ${i + 1}`}
             >
-              <img src={src} alt="" className={`w-full h-full object-cover ${position}`} />
+              <img src={src} alt="" className="w-full h-full object-cover" style={{ objectPosition: pos }} />
             </button>
           ))}
         </div>

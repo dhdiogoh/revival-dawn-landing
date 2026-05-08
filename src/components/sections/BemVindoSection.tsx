@@ -58,7 +58,7 @@ const BemVindoSection = () => {
           <ImageCarousel
             images={carouselImages}
             altPrefix="Evento RVL"
-            objectPositions={['object-top', 'object-top', 'object-center', 'object-center']}
+            objectPositions={['top', 'top', 'center', 'center']}
           />
         </div>
 

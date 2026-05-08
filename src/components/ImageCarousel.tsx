@@ -26,13 +26,14 @@ export function ImageCarousel({ images, altPrefix, objectPositions }: { images: 
     if (!images || images.length === 0) return null;
 
     return (
-        <div className="relative w-full h-full min-h-[300px] aspect-[4/3] md:aspect-auto rounded-xl overflow-hidden shadow-lg group">
+        <div className="relative w-full h-full rounded-xl overflow-hidden shadow-lg group">
             {images.map((img, idx) => (
                 <img
                     key={idx}
                     src={img}
                     alt={`${altPrefix} ${idx + 1}`}
-                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${objectPositions?.[idx] ?? 'object-center'} ${idx === currentIndex ? 'opacity-100' : 'opacity-0'}`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${idx === currentIndex ? 'opacity-100' : 'opacity-0'}`}
+                    style={{ objectPosition: objectPositions?.[idx] ?? 'center' }}
                 />
             ))}
 
