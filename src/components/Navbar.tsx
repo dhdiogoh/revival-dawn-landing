@@ -24,8 +24,8 @@ const Navbar = () => {
 
     const navLinks = [
         { name: 'INÍCIO', href: '/' },
+        { name: 'SOBRE', href: '/sobre' },
         { name: 'RVL CULTURE', href: '/revival-culture' },
-        { name: 'JEJUM', href: '/jejum' },
     ];
 
     const isHome = location.pathname === '/';

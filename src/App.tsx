@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
+import Sobre from "./pages/Sobre";
 import { GamePage } from "./pages/GamePage";
 import RevivalCulture from "./pages/RevivalCulture";
 import Admin from "./pages/Admin";
@@ -24,6 +25,7 @@ const App = () => (
           <Navbar />
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/sobre" element={<Sobre />} />
             <Route path="/game" element={<GamePage />} />
             <Route path="/revival-culture" element={<RevivalCulture />} />
             <Route path="/admin" element={<Admin />} />

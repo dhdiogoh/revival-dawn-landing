@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-export function ImageCarousel({ images, altPrefix }: { images: string[], altPrefix: string }) {
+export function ImageCarousel({ images, altPrefix, objectPositions }: { images: string[], altPrefix: string, objectPositions?: string[] }) {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -32,8 +32,7 @@ export function ImageCarousel({ images, altPrefix }: { images: string[], altPref
                     key={idx}
                     src={img}
                     alt={`${altPrefix} ${idx + 1}`}
-                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${idx === currentIndex ? 'opacity-100' : 'opacity-0'
-                        }`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${objectPositions?.[idx] ?? 'object-center'} ${idx === currentIndex ? 'opacity-100' : 'opacity-0'}`}
                 />
             ))}
 
