@@ -10,19 +10,6 @@ interface HeroSectionProps {
 const HeroSection = ({ animateIn }: HeroSectionProps) => {
   const { fromGame, transitionProgress, setTransitionProgress, setFromGame } = useTransition();
   const [animated, setAnimated] = useState(false);
-  const [isReleased, setIsReleased] = useState(false);
-  const RELEASE_DATE = new Date('2026-03-22T22:00:00-03:00').getTime();
-
-  useEffect(() => {
-    const checkTime = () => {
-      if (new Date().getTime() >= RELEASE_DATE) {
-        setIsReleased(true);
-      }
-    };
-    checkTime();
-    const interval = setInterval(checkTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     if (!fromGame) {
@@ -135,11 +122,12 @@ const HeroSection = ({ animateIn }: HeroSectionProps) => {
 
           {/* CTA */}
           <a
-            href="#pre-venda"
+            href="#inicio"
+            onClick={(e) => { e.preventDefault(); document.getElementById('inicio')?.scrollIntoView({ behavior: 'smooth' }); }}
             className="bg-rvl-creme text-rvl-escuro rounded-full px-6 py-3 sm:px-10 sm:py-4 font-inter font-bold text-xs sm:text-sm md:text-lg uppercase tracking-wide hover:opacity-90 hover:scale-105 shadow-[0_0_30px_rgba(251,244,228,0.3)] mt-2 whitespace-nowrap"
             style={getElementStyle(ctaDelay)}
           >
-            {isReleased ? 'Escolha seu ingresso aqui' : 'TERCEIRO LOTE CHEGANDO ↓'}
+            Confira as informações
           </a>
         </div>
       </div>
