@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-export function ImageCarousel({ images, altPrefix, objectPositions }: { images: string[], altPrefix: string, objectPositions?: string[] }) {
+export function ImageCarousel({ images, altPrefix, objectPositions, alwaysShowArrows }: { images: string[], altPrefix: string, objectPositions?: string[], alwaysShowArrows?: boolean }) {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -41,14 +41,14 @@ export function ImageCarousel({ images, altPrefix, objectPositions }: { images: 
                 <>
                     <button
                         onClick={goToPrev}
-                        className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/30 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20"
+                        className={`absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/30 text-white transition-opacity hover:bg-black/50 z-20 ${alwaysShowArrows ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
                     >
                         <ChevronLeft className="w-5 h-5 -ml-0.5" />
                     </button>
 
                     <button
                         onClick={goToNext}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/30 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/50 z-20"
+                        className={`absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-black/30 text-white transition-opacity hover:bg-black/50 z-20 ${alwaysShowArrows ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
                     >
                         <ChevronRight className="w-5 h-5 ml-0.5" />
                     </button>

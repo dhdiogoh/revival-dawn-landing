@@ -24,6 +24,18 @@ const InstitucionalSection = () => {
           </p>
         </div>
 
+        <div className="mb-10">
+          <a
+            href="/sobre"
+            className="inline-flex items-center gap-2 bg-rvl-escuro text-rvl-creme rounded-full px-7 py-3 font-inter font-bold text-sm uppercase tracking-wide hover:opacity-80 transition-opacity"
+          >
+            Saiba mais
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+              <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {cards.map((c) => (
             <div key={c.num} className="bg-background rounded-2xl p-8">

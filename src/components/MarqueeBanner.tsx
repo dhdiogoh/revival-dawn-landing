@@ -2,7 +2,7 @@ export function MarqueeBanner() {
     const items = [
         'AVIVAMENTO', 'UNIDADE', 'EXCELÊNCIA', 'BELÉM',
         'NORTE DO BRASIL', 'UM NOVO AMANHECER', 'REVIVAL',
-        '08.05.2026', 'CONFERENCE 26\''
+        'RVL 2026', 'NOS VEMOS EM 2027'
     ]
 
     const separator = <span className="mx-3 text-[#E8622A]">·</span>

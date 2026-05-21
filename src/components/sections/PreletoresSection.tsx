@@ -37,8 +37,8 @@ const PreletoresSection = () => {
 
         {open && (
           <ImageLightbox
-            src="/images/lineup-rvl-26.jpeg"
-            alt="Line-up RVL Conference 2026"
+            images={[{ src: '/images/lineup-rvl-26.jpeg', alt: 'Line-up RVL Conference 2026' }]}
+            index={0}
             onClose={() => setOpen(false)}
           />
         )}

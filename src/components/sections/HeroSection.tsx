@@ -92,43 +92,44 @@ const HeroSection = ({ animateIn }: HeroSectionProps) => {
 
 
         <div className="flex flex-col items-center gap-4 md:gap-5 lg:gap-5 xl:gap-7 relative z-10 w-full px-4 sm:px-6">
-          {/* Date pill */}
+          {/* Tag */}
           <div
             className="border border-rvl-creme/50 rounded-full px-3 py-1 sm:px-4 sm:py-1.5 text-rvl-creme text-[11px] sm:text-sm md:text-base font-inter bg-rvl-escuro/20 backdrop-blur-sm whitespace-nowrap"
             style={getElementStyle(dateDelay)}
           >
-            08 e 09 de Maio de 2026 — Hangar, Belém/PA
+            Revival Conference 26 — Belém/PA
           </div>
 
-          {/* Verse */}
+          {/* Headline */}
           <div
-            className="flex flex-col text-[#fff2dc] drop-shadow-md mt-3 w-fit max-w-[95%]"
+            className="flex flex-col text-[#fff2dc] drop-shadow-md mt-3 w-fit max-w-[95%] text-center"
             style={getElementStyle(verseDelay)}
           >
-            <div className="text-left px-2">
-              <span className="font-inter font-medium lowercase tracking-wide opacity-90 block mb-1" style={{ fontSize: 'clamp(12px, 3.8vw, 18px)' }}>
-                o choro pode <span className="line-through decoration-[2px] decoration-[#fff2dc]/90">durar uma noite</span>,
-              </span>
-              <span className="font-teenage uppercase block leading-tight" style={{ fontSize: 'clamp(14px, 4.5vw, 26px)' }}>
-                MAS A ALEGRIA VEM PELA MANHÃ...
-              </span>
-            </div>
-            <div className="text-right px-2 mt-1">
-              <span className="font-inter font-light text-xs md:text-sm opacity-75">
-                — Salmos 30.5
-              </span>
-            </div>
+            <span className="font-bebas uppercase block leading-none tracking-wide" style={{ fontSize: 'clamp(25px, 7vw, 56px)' }}>
+              NOS VEMOS EM 2027!
+            </span>
+            <span className="font-inter font-medium opacity-75 mt-2 block" style={{ fontSize: 'clamp(13px, 3.5vw, 20px)' }}>
+              O que vivemos em 2026 foi apenas o começo.
+            </span>
           </div>
 
-          {/* CTA */}
-          <a
-            href="#inicio"
-            onClick={(e) => { e.preventDefault(); document.getElementById('inicio')?.scrollIntoView({ behavior: 'smooth' }); }}
-            className="bg-rvl-creme text-rvl-escuro rounded-full px-6 py-3 sm:px-10 sm:py-4 font-inter font-bold text-xs sm:text-sm md:text-lg uppercase tracking-wide hover:opacity-90 hover:scale-105 shadow-[0_0_30px_rgba(251,244,228,0.3)] mt-2 whitespace-nowrap"
-            style={getElementStyle(ctaDelay)}
-          >
-            Confira as informações
-          </a>
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-3 mt-2" style={getElementStyle(ctaDelay)}>
+            <a
+              href="#pregacoes"
+              onClick={(e) => { e.preventDefault(); document.getElementById('pregacoes')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="bg-rvl-creme text-rvl-escuro rounded-full px-6 py-3 sm:px-10 sm:py-4 font-inter font-bold text-xs sm:text-sm md:text-base uppercase tracking-wide hover:opacity-90 hover:scale-105 shadow-[0_0_30px_rgba(251,244,228,0.3)] whitespace-nowrap text-center"
+            >
+              Acesse as pregações
+            </a>
+            <a
+              href="#fotos"
+              onClick={(e) => { e.preventDefault(); document.getElementById('fotos')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="border border-rvl-creme/60 text-rvl-creme rounded-full px-6 py-3 sm:px-10 sm:py-4 font-inter font-bold text-xs sm:text-sm md:text-base uppercase tracking-wide hover:bg-rvl-creme/10 transition-colors whitespace-nowrap text-center"
+            >
+              Ver as fotos
+            </a>
+          </div>
         </div>
       </div>
 
