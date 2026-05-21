@@ -23,9 +23,9 @@ const photos = photoNames.map((name) => ({
 
 // Foto extra só no mobile (preenche o vazio na 3ª linha do grid 2 colunas)
 const mobileExtra = {
-  thumb: '/images/rvl26-images/thumbs/IMG_4117.webp',
-  full:  '/images/rvl26-images/full/IMG_4117.webp',
-  alt:   'RVL 26 — IMG_4117',
+  thumb: `${base}/thumbs/THD_3682.webp`,
+  full:  `${base}/full/THD_3682.webp`,
+  alt:   'RVL 26 — THD_3682',
 };
 
 const allPhotos = [...photos, mobileExtra];

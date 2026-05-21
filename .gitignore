@@ -18,6 +18,12 @@ dist-ssr
 .env.production
 .env.development
 
+# Imagens originais pesadas (usar apenas os .webp comprimidos)
+public/images/**/*.jpg
+public/images/**/*.jpeg
+public/images/**/*.png
+public/images/**/*.CR3
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
