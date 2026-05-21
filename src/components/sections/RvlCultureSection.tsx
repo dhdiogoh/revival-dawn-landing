@@ -3,10 +3,10 @@ import { ImageCarousel } from '../ImageCarousel';
 const RvlCultureSection = () => {
     // Placeholder images for the carousel
     const cultureImages = [
-        '/images/rvl-culture-2024/11zon_compressed/11zon_compressed/foto1-rvl-culture_1_11zon.webp',
-        '/images/rvl-culture-2024/11zon_compressed/11zon_compressed/foto2-rvl-culture_2_11zon.webp',
-        '/images/rvl-culture-2024/11zon_compressed/11zon_compressed/foto3-rvl-culture_3_11zon.webp',
-        '/images/rvl-culture-2024/11zon_compressed/11zon_compressed/foto4-rvl-culture_4_11zon.webp',
+        '/images/rvl-culture-2024/compressed/foto1.webp',
+        '/images/rvl-culture-2024/compressed/foto2.webp',
+        '/images/rvl-culture-2024/compressed/foto3.webp',
+        '/images/rvl-culture-2024/compressed/foto4.webp',
     ];
 
     return (
@@ -54,8 +54,8 @@ const RvlCultureSection = () => {
                     </ul>
                 </div>
 
-                <div className="w-full md:w-1/2 rounded-xl overflow-hidden shadow-2xl">
-                    <ImageCarousel images={cultureImages} altPrefix="RVL Culture" />
+                <div className="w-full md:w-1/2 rounded-xl overflow-hidden shadow-2xl h-72 md:h-96">
+                    <ImageCarousel images={cultureImages} altPrefix="RVL Culture" alwaysShowArrows />
                 </div>
             </div>
         </section>

@@ -97,8 +97,8 @@ const AreasExperienciasSection = () => {
 
         {mapOpen && (
           <ImageLightbox
-            src={MAP_SRC}
-            alt="Mapa da RVL Conference 2026"
+            images={[{ src: MAP_SRC, alt: 'Mapa da RVL Conference 2026' }]}
+            index={0}
             onClose={() => setMapOpen(false)}
           />
         )}

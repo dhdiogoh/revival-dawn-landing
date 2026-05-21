@@ -4,7 +4,7 @@ const FooterSection = () => {
       <div className="max-w-5xl mx-auto text-center">
         <img src="/images/rvl-26-logo-adjust.png" alt="Revival Conference Logo" className="w-48 md:w-56 mx-auto mb-6 opacity-90 mix-blend-screen" />
         <p className="font-inter text-sm text-muted-foreground mb-6">
-          08 e 09 de maio de 2026 — Hangar, Belém/PA
+          Belém/PA — Nos vemos em 2027
         </p>
         <div className="flex justify-center gap-6 mb-8">
           <a href="https://www.instagram.com/rvlconference/" target="_blank" rel="noopener noreferrer" className="font-inter text-sm text-muted-foreground hover:text-rvl-creme transition-colors">
